@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/workoutsFragment"
+        android:icon="@drawable/workouts"
+        android:title="Workouts" />
+    <item
+        android:id="@+id/weeklyProgramFragment"
+        android:icon="@drawable/program"
+        android:title="Program" />
+    <item
+        android:id="@+id/dailyExerciseFragment"
+        android:icon="@drawable/day_exercise"
+        android:title="Daily Exercise" />
+    <item
+        android:id="@+id/caloriCalculatorFragment"
+        android:icon="@drawable/calculator"
+        android:title="Calculator" />
+</menu>
