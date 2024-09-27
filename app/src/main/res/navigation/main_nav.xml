@@ -34,4 +34,9 @@
         android:name="com.example.fitpath.ProgramDetailFragment"
         android:label="fragment_program_detail"
         tools:layout="@layout/fragment_program_detail" />
+    <fragment
+        android:id="@+id/exerciseFragment"
+        android:name="com.example.fitpath.ExerciseFragment"
+        android:label="fragment_exercise"
+        tools:layout="@layout/fragment_exercise" />
 </navigation>

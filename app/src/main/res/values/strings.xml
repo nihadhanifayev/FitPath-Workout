@@ -3,6 +3,9 @@
     <string name="WorkoutFragmentHeader">Workouts</string>
     <string name="ProgramFragmentHeader">Programs</string>
     <string name="ProgramsInfo">Create your Programs</string>
+    <string name="DailyExerciseFragmentHeader">Daily Exercise</string>
+    <string name="ExerciseFragmentHeader">Exercise</string>
+    <string name="TariningButtonText">Start Training</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

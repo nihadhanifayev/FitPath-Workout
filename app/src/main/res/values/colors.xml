@@ -7,5 +7,8 @@
     <color name="PrimaryThree">#443C68</color>
     <color name="PrimaryFour">#635985</color>
     <color name="PrimaryFife">#059212</color>
+    <color name="PrimarySix">#0990E9</color>
+    <color name="PrimarySeven">#720455</color>
+    <color name="PrimaryEight">#910A67</color>
 
 </resources>
