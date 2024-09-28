@@ -37,10 +37,27 @@
         android:id="@+id/programDetailFragment"
         android:name="com.example.fitpath.ProgramDetailFragment"
         android:label="fragment_program_detail"
-        tools:layout="@layout/fragment_program_detail" />
+        tools:layout="@layout/fragment_program_detail" >
+        <action
+            android:id="@+id/action_programDetailFragment_to_weeklyProgramFragment"
+            app:destination="@id/weeklyProgramFragment" />
+    </fragment>
     <fragment
         android:id="@+id/exerciseFragment"
         android:name="com.example.fitpath.ExerciseFragment"
         android:label="fragment_exercise"
-        tools:layout="@layout/fragment_exercise" />
+        tools:layout="@layout/fragment_exercise" >
+        <action
+            android:id="@+id/action_exerciseFragment_to_addExerciseFragment"
+            app:destination="@id/addExerciseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addExerciseFragment"
+        android:name="com.example.fitpath.AddExerciseFragment"
+        android:label="fragment_add_exercise"
+        tools:layout="@layout/fragment_add_exercise" >
+        <action
+            android:id="@+id/action_addExerciseFragment_to_exerciseFragment"
+            app:destination="@id/exerciseFragment" />
+    </fragment>
 </navigation>

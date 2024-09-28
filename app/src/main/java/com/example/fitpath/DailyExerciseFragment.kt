@@ -5,13 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.navigation.Navigation
+import com.example.fitpath.databinding.FragmentDailyExerciseBinding
 
 
 class DailyExerciseFragment : Fragment() {
-
+    private lateinit var design:FragmentDailyExerciseBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        design = FragmentDailyExerciseBinding.inflate(inflater,container,false)
 
-        return inflater.inflate(R.layout.fragment_daily_exercise, container, false) }
+        design.buttonAddExercise.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.gotoAddExercise)
+        }
+
+        return design.root
+
+    }
 
 }
