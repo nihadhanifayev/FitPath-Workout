@@ -6,6 +6,9 @@
     <string name="DailyExerciseFragmentHeader">Daily Exercise</string>
     <string name="ExerciseFragmentHeader">Exercise</string>
     <string name="TariningButtonText">Start Training</string>
+    <string name="CaloriCalculatorHeader">Calculate your daily calories</string>
+    <string name="CalculateButtonText">Calculate</string>
+    <string name="CalculateResult">Result</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

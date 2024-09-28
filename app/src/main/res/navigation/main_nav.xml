@@ -14,7 +14,11 @@
         android:id="@+id/dailyExerciseFragment"
         android:name="com.example.fitpath.DailyExerciseFragment"
         android:label="fragment_daily_exercise"
-        tools:layout="@layout/fragment_daily_exercise" />
+        tools:layout="@layout/fragment_daily_exercise" >
+        <action
+            android:id="@+id/gotoAddExercise"
+            app:destination="@id/exerciseFragment" />
+    </fragment>
     <fragment
         android:id="@+id/weeklyProgramFragment"
         android:name="com.example.fitpath.WeeklyProgramFragment"
