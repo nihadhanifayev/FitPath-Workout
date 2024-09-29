@@ -36,7 +36,8 @@
             android:id="@+id/textOne"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Day One" />
+            android:hint="Day One"
+            android:textColor="@color/white" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,7 +56,8 @@
             android:id="@+id/textTwo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Day Two" />
+            android:hint="Day Two"
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -73,7 +75,8 @@
             android:id="@+id/textThree"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Day Three" />
+            android:hint="Day Three"
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -91,7 +94,8 @@
             android:id="@+id/textFour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Day Four" />
+            android:hint="Day Four"
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -109,7 +113,8 @@
             android:id="@+id/textFife"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Day Fife" />
+            android:hint="Day Fife"
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -127,7 +132,8 @@
             android:id="@+id/textSix"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Day Six" />
+            android:hint="Day Six"
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -145,7 +151,8 @@
             android:id="@+id/textSeven"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Day Seven" />
+            android:hint="Day Seven"
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -172,7 +179,8 @@
             android:id="@+id/textProgramTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Program Title" />
+            android:hint="Program Title"
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
