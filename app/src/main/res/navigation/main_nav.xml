@@ -16,7 +16,7 @@
         android:label="fragment_daily_exercise"
         tools:layout="@layout/fragment_daily_exercise" >
         <action
-            android:id="@+id/gotoAddExercise"
+            android:id="@+id/dailyExerciseFragment_exerciseFragment"
             app:destination="@id/exerciseFragment" />
     </fragment>
     <fragment
@@ -25,21 +25,25 @@
         android:label="fragment_weekly_program"
         tools:layout="@layout/fragment_weekly_program" >
         <action
-            android:id="@+id/gotoCreatePrograms"
+            android:id="@+id/weeklyProgramFragment_programDetailFragment"
             app:destination="@id/programDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/workoutsFragment"
         android:name="com.example.fitpath.WorkoutsFragment"
         android:label="fragment_workouts"
-        tools:layout="@layout/fragment_workouts" />
+        tools:layout="@layout/fragment_workouts" >
+        <action
+            android:id="@+id/workoutsFragment_workoutDetailFragment"
+            app:destination="@id/workoutDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/programDetailFragment"
         android:name="com.example.fitpath.ProgramDetailFragment"
         android:label="fragment_program_detail"
         tools:layout="@layout/fragment_program_detail" >
         <action
-            android:id="@+id/action_programDetailFragment_to_weeklyProgramFragment"
+            android:id="@+id/programDetailFragment_weeklyProgramFragment"
             app:destination="@id/weeklyProgramFragment" />
     </fragment>
     <fragment
@@ -48,7 +52,7 @@
         android:label="fragment_exercise"
         tools:layout="@layout/fragment_exercise" >
         <action
-            android:id="@+id/action_exerciseFragment_to_addExerciseFragment"
+            android:id="@+id/exerciseFragment_addExerciseFragment"
             app:destination="@id/addExerciseFragment" />
     </fragment>
     <fragment
@@ -57,12 +61,21 @@
         android:label="fragment_add_exercise"
         tools:layout="@layout/fragment_add_exercise" >
         <action
-            android:id="@+id/action_addExerciseFragment_to_exerciseFragment"
+            android:id="@+id/addExerciseFragment_exerciseFragment"
             app:destination="@id/exerciseFragment" />
     </fragment>
     <fragment
         android:id="@+id/workoutCategoryFragment"
         android:name="com.example.fitpath.WorkoutCategoryFragment"
         android:label="fragment_workout_category"
-        tools:layout="@layout/fragment_workout_category" />
+        tools:layout="@layout/fragment_workout_category" >
+        <action
+            android:id="@+id/workoutCategoryFragment_workoutsFragment"
+            app:destination="@id/workoutsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workoutDetailFragment"
+        android:name="com.example.fitpath.WorkoutDetailFragment"
+        android:label="fragment_workout_detail"
+        tools:layout="@layout/fragment_workout_detail" />
 </navigation>
