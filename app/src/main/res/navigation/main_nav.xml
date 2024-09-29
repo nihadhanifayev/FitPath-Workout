@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/workoutsFragment">
+    app:startDestination="@id/workoutCategoryFragment">
 
     <fragment
         android:id="@+id/caloriCalculatorFragment"
@@ -60,4 +60,9 @@
             android:id="@+id/action_addExerciseFragment_to_exerciseFragment"
             app:destination="@id/exerciseFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/workoutCategoryFragment"
+        android:name="com.example.fitpath.WorkoutCategoryFragment"
+        android:label="fragment_workout_category"
+        tools:layout="@layout/fragment_workout_category" />
 </navigation>

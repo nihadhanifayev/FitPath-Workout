@@ -19,7 +19,7 @@ class WorkoutsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         design = FragmentWorkoutsBinding.inflate(inflater,container,false)
 
-
+        workouts = ArrayList<Workout>()
 
         adapter = WorkoutsAdapter(requireContext(),workouts)
         design.WorkoutRV.setHasFixedSize(true)
