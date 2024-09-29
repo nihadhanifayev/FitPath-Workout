@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitpath.adapters.ProgramAdapter
 import com.example.fitpath.classes.Program
@@ -28,7 +27,7 @@ class WeeklyProgramFragment : Fragment() {
         design.ProgramsRV.adapter = adapter
 
         design.addProgramFab.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.gotoCreatePrograms)
+            Navigation.findNavController(it).navigate(R.id.weeklyProgramFragment_programDetailFragment)
         }
 
         return inflater.inflate(R.layout.fragment_weekly_program, container, false) }

@@ -15,7 +15,7 @@ class DailyExerciseFragment : Fragment() {
         design = FragmentDailyExerciseBinding.inflate(inflater,container,false)
 
         design.buttonAddExercise.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.gotoAddExercise)
+            Navigation.findNavController(it).navigate(R.id.dailyExerciseFragment_exerciseFragment)
         }
 
         return design.root
