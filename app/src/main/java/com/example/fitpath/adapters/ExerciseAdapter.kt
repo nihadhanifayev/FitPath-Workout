@@ -46,10 +46,10 @@ class ExerciseAdapter(private val mContext:Context,private var Exercises:List<Ex
         var exercise =Exercises.get(position)
 
         holder.exercise_title.text = exercise.exercise_name
-        holder.exercise_set.text = exercise.set
-        holder.exercise_rep.text = exercise.rep
-        holder.exercise_weight.text = exercise.weight
-        holder.exercise_rest.text = exercise.rest
+        holder.exercise_set.text = "Sets : "+exercise.set
+        holder.exercise_rep.text = "Reps : "+exercise.rep
+        holder.exercise_weight.text = "Weights(kg) : "+exercise.weight
+        holder.exercise_rest.text = "Rests(min) : "+exercise.rest
     }
 
 }

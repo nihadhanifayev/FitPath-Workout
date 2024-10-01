@@ -14,9 +14,6 @@ class DailyExerciseFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         design = FragmentDailyExerciseBinding.inflate(inflater,container,false)
 
-        design.buttonAddExercise.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.dailyExerciseFragment_exerciseFragment)
-        }
 
         return design.root
 

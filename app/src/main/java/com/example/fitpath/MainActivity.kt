@@ -1,5 +1,6 @@
 package com.example.fitpath
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,12 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.navhostfragment) as NavHostFragment
 
         NavigationUI.setupWithNavController(design.bottomnav,navHostFragment.navController)
+
+        design.floatingActionButton.setOnClickListener {
+            val intent = Intent(this,ActivityTraining::class.java)
+
+            startActivity(intent)
+        }
 
     }
 }

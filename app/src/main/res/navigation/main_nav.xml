@@ -11,15 +11,6 @@
         android:label="fragment_calori_calculator"
         tools:layout="@layout/fragment_calori_calculator" />
     <fragment
-        android:id="@+id/dailyExerciseFragment"
-        android:name="com.example.fitpath.DailyExerciseFragment"
-        android:label="fragment_daily_exercise"
-        tools:layout="@layout/fragment_daily_exercise" >
-        <action
-            android:id="@+id/dailyExerciseFragment_exerciseFragment"
-            app:destination="@id/exerciseFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/weeklyProgramFragment"
         android:name="com.example.fitpath.WeeklyProgramFragment"
         android:label="fragment_weekly_program"
@@ -47,24 +38,6 @@
             app:destination="@id/weeklyProgramFragment" />
     </fragment>
     <fragment
-        android:id="@+id/exerciseFragment"
-        android:name="com.example.fitpath.ExerciseFragment"
-        android:label="fragment_exercise"
-        tools:layout="@layout/fragment_exercise" >
-        <action
-            android:id="@+id/exerciseFragment_addExerciseFragment"
-            app:destination="@id/addExerciseFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/addExerciseFragment"
-        android:name="com.example.fitpath.AddExerciseFragment"
-        android:label="fragment_add_exercise"
-        tools:layout="@layout/fragment_add_exercise" >
-        <action
-            android:id="@+id/addExerciseFragment_exerciseFragment"
-            app:destination="@id/exerciseFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/workoutCategoryFragment"
         android:name="com.example.fitpath.WorkoutCategoryFragment"
         android:label="fragment_workout_category"
@@ -78,4 +51,9 @@
         android:name="com.example.fitpath.WorkoutDetailFragment"
         android:label="fragment_workout_detail"
         tools:layout="@layout/fragment_workout_detail" />
+    <fragment
+        android:id="@+id/dailyExerciseFragment"
+        android:name="com.example.fitpath.DailyExerciseFragment"
+        android:label="fragment_daily_exercise"
+        tools:layout="@layout/fragment_daily_exercise" />
 </navigation>

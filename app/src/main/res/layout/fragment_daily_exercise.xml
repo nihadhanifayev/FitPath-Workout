@@ -20,21 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonAddExercise"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/PrimaryFife"
-        android:text="Add"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:cornerRadius="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDailyExerciseFragmentTitle" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/DailyExerciseRv"
         android:layout_width="0dp"
@@ -43,5 +28,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAddExercise" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDailyExerciseFragmentTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

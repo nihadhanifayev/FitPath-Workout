@@ -10,11 +10,11 @@
         android:icon="@drawable/program"
         android:title="Program" />
     <item
-        android:id="@+id/dailyExerciseFragment"
-        android:icon="@drawable/day_exercise"
-        android:title="Daily Exercise" />
-    <item
         android:id="@+id/caloriCalculatorFragment"
         android:icon="@drawable/calculator"
         android:title="Calculator" />
+    <item
+        android:id="@+id/dailyExerciseFragment"
+        android:icon="@drawable/day_exercise"
+        android:title="Daily Training" />
 </menu>
