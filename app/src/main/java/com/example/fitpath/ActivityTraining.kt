@@ -97,6 +97,7 @@ class ActivityTraining : AppCompatActivity() {
             alertD.setPositiveButton("Ok"){dialoginterface,i ->
                 val exercise = Exercise(
                     0,
+                    0,
                     exercise_name.text.toString().toUpperCase(),
                     sets.text.toString(),
                     reps.text.toString(),

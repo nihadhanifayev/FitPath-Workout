@@ -40,7 +40,7 @@ class DailyExerciseAdapter(private val mContext:Context,private var ExerciseList
     override fun onBindViewHolder(holder: CardDesignObjectsDailyExercise, position: Int) {
         val exercise = ExerciseList.get(position)
 
-        holder.training_name.text = exercise.name
+        holder.training_name.text = exercise.title
         holder.training_time.text = exercise.time
         holder.training_date.text = exercise.date
     }
