@@ -22,6 +22,7 @@ class ActivityTraining : AppCompatActivity() {
     private lateinit var design:ActivityTrainingBinding
     private lateinit var adapter:ExerciseAdapter
     private lateinit var exercises:ArrayList<Exercise>
+    private lateinit var timer:CountDownTimer
     private var second = 0
     private var minute = 0
     private var hour = 0
@@ -37,7 +38,7 @@ class ActivityTraining : AppCompatActivity() {
         design.TrainingRV.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         design.TrainingRV.adapter = adapter
 
-        val timer = object:CountDownTimer(300000,10){
+        timer = object:CountDownTimer(14400000,1000){
             override fun onTick(millisUntilFinished: Long) {
                 if (second<10){
                     design.textViewSecond.setText(": 0$second")
@@ -95,6 +96,7 @@ class ActivityTraining : AppCompatActivity() {
 
             alertD.setPositiveButton("Ok"){dialoginterface,i ->
                 val exercise = Exercise(
+                    0,
                     exercise_name.text.toString().toUpperCase(),
                     sets.text.toString(),
                     reps.text.toString(),
@@ -113,6 +115,7 @@ class ActivityTraining : AppCompatActivity() {
         alertD2.setTitle("Warning")
         alertD2.setMessage("İf you go back your notes will be lost\nFinish the exercise if you want to save your notes")
         alertD2.setPositiveButton("Go Back") { dialoginterface, i ->
+            timer.cancel()
             super.onBackPressed()
         }
         alertD2.setNegativeButton("Cancel"){dialoginterface,i -> }
