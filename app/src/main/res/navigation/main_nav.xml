@@ -18,6 +18,9 @@
         <action
             android:id="@+id/weeklyProgramFragment_programDetailFragment"
             app:destination="@id/programDetailFragment" />
+        <action
+            android:id="@+id/action_weeklyProgramFragment_to_programDetailsOverviewFragment"
+            app:destination="@id/programDetailsOverviewFragment" />
     </fragment>
     <fragment
         android:id="@+id/workoutsFragment"
@@ -56,4 +59,9 @@
         android:name="com.example.fitpath.DailyExerciseFragment"
         android:label="fragment_daily_exercise"
         tools:layout="@layout/fragment_daily_exercise" />
+    <fragment
+        android:id="@+id/programDetailsOverviewFragment"
+        android:name="com.example.fitpath.ProgramDetailsOverviewFragment"
+        android:label="fragment_program_details_overview"
+        tools:layout="@layout/fragment_program_details_overview" />
 </navigation>
