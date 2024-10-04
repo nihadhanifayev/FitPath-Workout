@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.jetbrains.annotations.NotNull
+import java.io.Serializable
 
 @Entity(tableName = "programs")
 data class Program(
@@ -17,5 +18,5 @@ data class Program(
     @ColumnInfo("day_fife") @NotNull var dayFife:String,
     @ColumnInfo("day_six") @NotNull var daySix:String,
     @ColumnInfo("day_seven") @NotNull var daySeven:String,
-    ) {
+    ) : Serializable{
 }

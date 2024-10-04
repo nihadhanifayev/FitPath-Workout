@@ -2,12 +2,17 @@ package com.example.fitpath.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitpath.R
+import com.example.fitpath.WeeklyProgramFragmentDirections
 import com.example.fitpath.classes.Program
 
 class ProgramAdapter(private val mContext:Context,private var Programs:List<Program>):
@@ -16,10 +21,12 @@ class ProgramAdapter(private val mContext:Context,private var Programs:List<Prog
     inner class CardDesignObjectsPrograms(design:View):RecyclerView.ViewHolder(design){
         val program_name:TextView
         val cardView:CardView
+        val more_image:ImageView
 
         init {
             program_name = design.findViewById(R.id.textViewProgramTitle)
             cardView = design.findViewById(R.id.cardViewProgram)
+            more_image = design.findViewById(R.id.imageViewMore)
         }
 
     }
@@ -37,6 +44,28 @@ class ProgramAdapter(private val mContext:Context,private var Programs:List<Prog
         val program = Programs.get(position)
 
         holder.program_name.text = program.program_name
+        holder.cardView.setOnClickListener {
+            val transition = WeeklyProgramFragmentDirections.weeklyProgramFProgramOverview(program)
+            Navigation.findNavController(it).navigate(transition)
+        }
+        holder.more_image.setOnClickListener {
+            val transition1 = WeeklyProgramFragmentDirections.weeklyProgramFAddProgramF(program)
+            val popupmenu = PopupMenu(mContext,holder.more_image)
+            popupmenu.menuInflater.inflate(R.menu.program_card_menu,popupmenu.menu)
+            popupmenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
+                when(item.itemId){
+                    R.id.action_program_change -> {
+                        Navigation.findNavController(it).navigate(transition1)
+                        true
+                    }
+                    R.id.action_program_delete -> {
+                        true
+                    }
+                    else -> {false}
+                }
+            })
+            popupmenu.show()
+        }
     }
 
 }

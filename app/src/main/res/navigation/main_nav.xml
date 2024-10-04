@@ -16,10 +16,10 @@
         android:label="fragment_weekly_program"
         tools:layout="@layout/fragment_weekly_program" >
         <action
-            android:id="@+id/weeklyProgramFragment_programDetailFragment"
+            android:id="@+id/weeklyProgramF_AddProgramF"
             app:destination="@id/programDetailFragment" />
         <action
-            android:id="@+id/action_weeklyProgramFragment_to_programDetailsOverviewFragment"
+            android:id="@+id/weeklyProgramF_ProgramOverview"
             app:destination="@id/programDetailsOverviewFragment" />
     </fragment>
     <fragment
@@ -37,8 +37,13 @@
         android:label="fragment_program_detail"
         tools:layout="@layout/fragment_program_detail" >
         <action
-            android:id="@+id/programDetailFragment_weeklyProgramFragment"
+            android:id="@+id/programDetailF_weeklyProgram"
             app:destination="@id/weeklyProgramFragment" />
+        <argument
+            android:name="program"
+            app:argType="com.example.fitpath.classes.Program"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/workoutCategoryFragment"
@@ -63,5 +68,9 @@
         android:id="@+id/programDetailsOverviewFragment"
         android:name="com.example.fitpath.ProgramDetailsOverviewFragment"
         android:label="fragment_program_details_overview"
-        tools:layout="@layout/fragment_program_details_overview" />
+        tools:layout="@layout/fragment_program_details_overview" >
+        <argument
+            android:name="program"
+            app:argType="com.example.fitpath.classes.Program" />
+    </fragment>
 </navigation>
