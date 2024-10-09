@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fitpath.DailyExerciseFragmentDirections
 import com.example.fitpath.R
 import com.example.fitpath.classes.DailyExercise
 
@@ -43,6 +45,11 @@ class DailyExerciseAdapter(private val mContext:Context,private var ExerciseList
         holder.training_name.text = exercise.title
         holder.training_time.text = exercise.time
         holder.training_date.text = exercise.date
+
+        holder.cardViewExercise.setOnClickListener {
+            val transition = DailyExerciseFragmentDirections.dailyExerciseFDailyExerciseFDetail(exercise)
+            Navigation.findNavController(it).navigate(transition)
+        }
     }
 
 }

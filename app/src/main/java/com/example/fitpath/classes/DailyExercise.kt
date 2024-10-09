@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.jetbrains.annotations.NotNull
+import java.io.Serializable
 
 @Entity(tableName = "daily_exercise")
 data class DailyExercise(
@@ -11,5 +12,5 @@ data class DailyExercise(
     @ColumnInfo("exercise_daily_id") @NotNull var exercise_daily_id:Int,
     @ColumnInfo("exercise_title") @NotNull var title:String,
     @ColumnInfo("exercise_time") @NotNull var time:String,
-    @ColumnInfo("exercise_date") @NotNull var date:String) {
+    @ColumnInfo("exercise_date") @NotNull var date:String):Serializable {
 }

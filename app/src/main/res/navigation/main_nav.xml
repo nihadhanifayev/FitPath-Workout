@@ -63,7 +63,11 @@
         android:id="@+id/dailyExerciseFragment"
         android:name="com.example.fitpath.DailyExerciseFragment"
         android:label="fragment_daily_exercise"
-        tools:layout="@layout/fragment_daily_exercise" />
+        tools:layout="@layout/fragment_daily_exercise" >
+        <action
+            android:id="@+id/dailyExerciseF_dailyExerciseFDetail"
+            app:destination="@id/dailyExerciseDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/programDetailsOverviewFragment"
         android:name="com.example.fitpath.ProgramDetailsOverviewFragment"
@@ -72,5 +76,17 @@
         <argument
             android:name="program"
             app:argType="com.example.fitpath.classes.Program" />
+    </fragment>
+    <fragment
+        android:id="@+id/dailyExerciseDetailFragment"
+        android:name="com.example.fitpath.DailyExerciseDetailFragment"
+        android:label="fragment_daily_exercise_detail"
+        tools:layout="@layout/fragment_daily_exercise_detail" >
+        <action
+            android:id="@+id/dailyExerciseDetail_DailyExercise"
+            app:destination="@id/dailyExerciseFragment" />
+        <argument
+            android:name="exercise"
+            app:argType="com.example.fitpath.classes.DailyExercise" />
     </fragment>
 </navigation>
