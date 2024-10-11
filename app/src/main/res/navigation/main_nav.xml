@@ -30,6 +30,10 @@
         <action
             android:id="@+id/workoutsFragment_workoutDetailFragment"
             app:destination="@id/workoutDetailFragment" />
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="Empty" />
     </fragment>
     <fragment
         android:id="@+id/programDetailFragment"
@@ -58,7 +62,11 @@
         android:id="@+id/workoutDetailFragment"
         android:name="com.example.fitpath.WorkoutDetailFragment"
         android:label="fragment_workout_detail"
-        tools:layout="@layout/fragment_workout_detail" />
+        tools:layout="@layout/fragment_workout_detail" >
+        <argument
+            android:name="workout"
+            app:argType="com.example.fitpath.classes.Workout" />
+    </fragment>
     <fragment
         android:id="@+id/dailyExerciseFragment"
         android:name="com.example.fitpath.DailyExerciseFragment"

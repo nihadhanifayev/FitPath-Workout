@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitpath.R
+import com.example.fitpath.WorkoutCategoryFragmentDirections
 import com.example.fitpath.classes.WorkoutCategory
 
 class WorkoutCategoryAdapter(private val mContext:Context,private var Categories:List<WorkoutCategory>):
@@ -34,9 +36,13 @@ class WorkoutCategoryAdapter(private val mContext:Context,private var Categories
     }
 
     override fun onBindViewHolder(holder: CardDesignObjectsCategory, position: Int) {
-        var categori = Categories.get(position)
+        val categori = Categories.get(position)
 
         holder.category_name.text = categori.category
+        holder.cardViewCategory.setOnClickListener {
+            val send_category = WorkoutCategoryFragmentDirections.workoutCategoryFragmentWorkoutsFragment(categori.category)
+            Navigation.findNavController(it).navigate(send_category)
+        }
     }
 
 }
