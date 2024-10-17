@@ -43,7 +43,7 @@ class DailyExerciseDetailFragment : Fragment() {
             }
             adapter = ExerciseAdapter(requireContext(),Exercises)
             design.DetailExerciseRv.setHasFixedSize(true)
-            design.DetailExerciseRv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+            design.DetailExerciseRv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
             design.DetailExerciseRv.adapter = adapter
         }
         design.textViewExerciseDetailTitle.text = exercise.title

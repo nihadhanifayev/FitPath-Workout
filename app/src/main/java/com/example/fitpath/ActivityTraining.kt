@@ -49,7 +49,7 @@ class ActivityTraining : AppCompatActivity() {
         exercises = ArrayList<Exercise>()
         adapter = ExerciseAdapter(this,exercises)
         design.TrainingRV.setHasFixedSize(true)
-        design.TrainingRV.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        design.TrainingRV.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
         design.TrainingRV.adapter = adapter
 
         timer = object:CountDownTimer(14400000,1000){
