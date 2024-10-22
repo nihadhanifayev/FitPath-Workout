@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -21,6 +22,9 @@ android {
 
     buildFeatures{
         viewBinding = true
+    }
+    dataBinding{
+        enable = true
     }
 
     buildTypes {
@@ -60,5 +64,13 @@ dependencies {
     //Coroutine
     implementation("androidx.room:room-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.6")
+    //Hilt
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+    //LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata:2.8.4")
+    implementation("androidx.lifecycle:lifecycle-viewmodel:2.8.4")
+    implementation("androidx.activity:activity-ktx:1.9.1")
+    kapt("androidx.lifecycle:lifecycle-compiler:2.8.4")
 
 }

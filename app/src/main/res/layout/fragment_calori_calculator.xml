@@ -1,231 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ConstraintLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/PrimaryOne"
-    tools:context=".CaloriCalculatorFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/textViewCaloriCalcİnfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/CaloriCalculatorHeader"
-        android:textAllCaps="true"
-        android:textColor="@color/PrimarySix"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+        <variable name="caloriecalculatorfragmentobject" type="com.example.fitpath.CaloriCalculatorFragment" />
+        <variable name="BMI" type="Integer" />
+        <variable name="BMIResult" type="String" />
+        <variable name="DailyCalorie" type="String" />
+    </data>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCaloriCalcİnfo">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/PrimaryOne"
+        tools:context=".CaloriCalculatorFragment">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textHeight"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textViewCaloriCalcİnfo"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="height(x.xx)m"
-            android:textColor="@color/white" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/CaloriCalculatorHeader"
+            android:textAllCaps="true"
+            android:textColor="@color/PrimarySix"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textWeight"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:hint="weight(kg)"
-            android:textColor="@color/white" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCaloriCalcİnfo">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout3"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textAge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="age"
-            android:textColor="@color/white" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <RadioGroup
-        android:id="@+id/radioGroupGender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
-
-        <RadioButton
-            android:id="@+id/radioButtonMan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Man"
-            android:textColor="@color/PrimaryFour"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <RadioButton
-            android:id="@+id/radioButtonWoman"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Woman"
-            android:textColor="@color/PrimaryFour"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/radioGroupActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupGender">
-
-        <RadioButton
-            android:id="@+id/radioButtonActivityOne"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Little to no exercise"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <RadioButton
-            android:id="@+id/radioButtonActivityTwo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Light exercise 1-3 times per week"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <RadioButton
-            android:id="@+id/radioButtonActivityThree"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Moderate exercise 3-5 times per week"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <RadioButton
-            android:id="@+id/radioButtonActivityFour"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Heavy physical exercise 5-6 times per week"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/buttonCalculate"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/PrimarySix"
-        android:text="@string/CalculateButtonText"
-        android:textSize="20sp"
-        app:cornerRadius="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupActivity" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewResult"
-        android:layout_width="200dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCaloriCalcİnfo">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/PrimarySix">
-
-            <TextView
-                android:id="@+id/textViewResult"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textHeight"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/CalculateResult"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:hint="height(x.xx)m"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/textViewDailyCalori"
-                android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout2"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textWeight"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="50dp"
-                android:text="Daily Calori : "
-                android:textColor="@color/PrimaryOne"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewResult" />
+                android:hint="weight(kg)"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/textViewBMI"
-                android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout3"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textAge"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
-                android:text="BMI  : "
-                android:textColor="@color/PrimaryOne"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewDailyCalori" />
+                android:hint="age"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/textViewBMIResult"
-                android:layout_width="180dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
-                android:text="Status : "
-                android:textColor="@color/PrimaryOne"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewBMI" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+        <RadioGroup
+            android:id="@+id/radioGroupGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <RadioButton
+                android:id="@+id/radioButtonMan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Man"
+                android:textColor="@color/PrimaryFour"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/radioButtonWoman"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Woman"
+                android:textColor="@color/PrimaryFour"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/radioGroupActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroupGender">
+
+            <RadioButton
+                android:id="@+id/radioButtonActivityOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Little to no exercise"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/radioButtonActivityTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Light exercise 1-3 times per week"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/radioButtonActivityThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Moderate exercise 3-5 times per week"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/radioButtonActivityFour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Heavy physical exercise 5-6 times per week"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/buttonCalculate"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/PrimarySix"
+            android:text="@string/CalculateButtonText"
+            android:textSize="20sp"
+            android:onClick="@{() -> caloriecalculatorfragmentobject.calculateButton(textAge.getText().toString(),textHeight.getText().toString(),textWeight.getText().toString())}"
+            app:cornerRadius="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroupActivity" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewResult"
+            android:layout_width="200dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCaloriCalcİnfo">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/PrimarySix">
+
+                <TextView
+                    android:id="@+id/textViewResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/CalculateResult"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textViewDailyCalori"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="50dp"
+                    android:text="@{DailyCalorie}"
+                    android:textColor="@color/PrimaryOne"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewResult" />
+
+                <TextView
+                    android:id="@+id/textViewBMI"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="32dp"
+                    android:text="@{BMI.toString()}"
+                    android:textColor="@color/PrimaryOne"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewDailyCalori" />
+
+                <TextView
+                    android:id="@+id/textViewBMIResult"
+                    android:layout_width="180dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="32dp"
+                    android:text="@{BMIResult}"
+                    android:textColor="@color/PrimaryOne"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewBMI" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

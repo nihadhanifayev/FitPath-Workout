@@ -11,7 +11,7 @@ import com.example.fitpath.classes.Program
 @Dao
 interface ProgramDao {
 
-    @Query("Select * From programs")
+    @Query("SELECT * FROM programs")
     suspend fun getPrograms():List<Program>
 
     @Insert

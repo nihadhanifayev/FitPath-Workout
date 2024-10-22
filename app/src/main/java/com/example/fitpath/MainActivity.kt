@@ -6,26 +6,24 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.fitpath.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var design:ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        design = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(design.root)
-
+        design = DataBindingUtil.setContentView(this,R.layout.activity_main)
+        design.activitymainobject = this
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.navhostfragment) as NavHostFragment
-
         NavigationUI.setupWithNavController(design.bottomnav,navHostFragment.navController)
-
-        design.floatingActionButton.setOnClickListener {
-            val intent = Intent(this,ActivityTraining::class.java)
-
-            startActivity(intent)
-        }
-
+    }
+    fun fabClickButton(){
+        val intent = Intent(this,ActivityTraining::class.java)
+        startActivity(intent)
     }
 }

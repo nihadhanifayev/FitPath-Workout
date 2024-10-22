@@ -1,190 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/PrimaryOne"
-    tools:context=".ProgramDetailFragment" >
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="Program"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/textInputLayoutProgramTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+        <variable name="program" type="com.example.fitpath.classes.Program" />
+        <variable name="programDetailObject" type="com.example.fitpath.ProgramDetailFragment" />
+    </data>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutDayOne"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/PrimaryOne"
+        tools:context=".ProgramDetailFragment">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textOne"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Day One"
-            android:textColor="@color/white" />
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="Program"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/textInputLayoutProgramTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutDayTwo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDayOne">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textTwo"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutDayOne"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Day Two"
-            android:textColor="@color/white" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutDayThree"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDayTwo">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Day One"
+                android:text="@{program.dayOne}"
+                android:textColor="@color/white" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textThree"
-            android:layout_width="match_parent"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutDayTwo"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Day Three"
-            android:textColor="@color/white" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDayOne">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutDayFour"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDayThree">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Day Two"
+                android:text="@{program.dayTwo}"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textFour"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutDayThree"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Day Four"
-            android:textColor="@color/white" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDayTwo">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutDayFife"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDayFour">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Day Three"
+                android:text="@{program.dayThree}"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textFife"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutDayFour"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Day Fife"
-            android:textColor="@color/white" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDayThree">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutDaySix"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDayFife">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textFour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Day Four"
+                android:text="@{program.dayFour}"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textSix"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutDayFife"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Day Six"
-            android:textColor="@color/white" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDayFour">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TextInputLayoutDayseven"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDaySix">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textFife"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Day Fife"
+                android:text="@{program.dayFife}"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textSeven"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutDaySix"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Day Seven"
-            android:textColor="@color/white" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDayFife">
 
-    <Button
-        android:id="@+id/buttonCreateProgram"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="@color/PrimaryFife"
-        android:text="Create"
-        android:textSize="20sp"
-        app:cornerRadius="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextInputLayoutDayseven" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textSix"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Day Six"
+                android:text="@{program.daySix}"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutProgramTitle"
-        android:layout_width="293dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textProgramTitle"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TextInputLayoutDayseven"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Program Title"
-            android:textColor="@color/white" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDaySix">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textSeven"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Day Seven"
+                android:text="@{program.daySeven}"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/buttonCreateProgram"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/PrimaryFife"
+            android:text="Create"
+            android:textSize="20sp"
+            app:cornerRadius="5dp"
+            android:onClick="@{() -> programDetailObject.createButtonFun(textProgramTitle.getText().toString(),textOne.getText().toString(),textTwo.getText().toString(),textThree.getText().toString(),textFour.getText().toString(),textFife.getText().toString(),textSix.getText().toString(),textSeven.getText().toString())}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TextInputLayoutDayseven" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutProgramTitle"
+            android:layout_width="293dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textProgramTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Program Title"
+                android:text="@{program.program_name}"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
