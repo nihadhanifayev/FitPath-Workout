@@ -6,6 +6,15 @@
     <data>
         <variable name="program" type="com.example.fitpath.classes.Program" />
         <variable name="programDetailObject" type="com.example.fitpath.ProgramDetailFragment" />
+        <variable name="spinneradapter" type="android.widget.ArrayAdapter" />
+        <variable name="view" type="android.view.View" />
+        <variable name="dayNumber1" type="String" />
+        <variable name="dayNumber2" type="String" />
+        <variable name="dayNumber3" type="String" />
+        <variable name="dayNumber4" type="String" />
+        <variable name="dayNumber5" type="String" />
+        <variable name="dayNumber6" type="String" />
+        <variable name="dayNumber7" type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,159 +40,151 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutDayOne"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayoutDayTwo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutProgramTitle">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textOne"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="Day One"
                 android:text="@{program.dayOne}"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="12sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutDayTwo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayoutDayThree"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDayOne">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textTwo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="Day Two"
                 android:text="@{program.dayTwo}"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutDayThree"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayoutDayFour"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDayTwo">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textThree"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="Day Three"
                 android:text="@{program.dayThree}"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutDayFour"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayoutDayFife"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDayThree">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textFour"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="Day Four"
                 android:text="@{program.dayFour}"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutDayFife"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayoutDaySix"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDayFour">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textFife"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="Day Fife"
                 android:text="@{program.dayFife}"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutDaySix"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/TextInputLayoutDayseven"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDayFife">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textSix"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="Day Six"
                 android:text="@{program.daySix}"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/TextInputLayoutDayseven"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/buttonCreateProgram"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDaySix">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textSeven"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="Day Seven"
                 android:text="@{program.daySeven}"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/buttonCreateProgram"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginBottom="80dp"
             android:backgroundTint="@color/PrimaryFife"
+            android:onClick="@{() -> programDetailObject.createButtonFun(textProgramTitle.getText().toString(),textOne.getText().toString(),textTwo.getText().toString(),textThree.getText().toString(),textFour.getText().toString(),textFife.getText().toString(),textSix.getText().toString(),textSeven.getText().toString())}"
             android:text="Create"
             android:textSize="20sp"
             app:cornerRadius="5dp"
-            android:onClick="@{() -> programDetailObject.createButtonFun(textProgramTitle.getText().toString(),textOne.getText().toString(),textTwo.getText().toString(),textThree.getText().toString(),textFour.getText().toString(),textFife.getText().toString(),textSix.getText().toString(),textSeven.getText().toString())}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/TextInputLayoutDayseven" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutProgramTitle"
@@ -202,6 +203,265 @@
                 android:text="@{program.program_name}"
                 android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/spinnerDayOne"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:adapter="@{spinneradapter}"
+            android:background="@color/white"
+            android:onItemSelected="@{() -> programDetailObject.addWorkoutOne()}"
+            android:spinnerMode="dialog"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/spinnerDayTwo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutProgramTitle"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Spinner
+            android:id="@+id/spinnerDayTwo"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:adapter="@{spinneradapter}"
+            android:background="@color/white"
+            android:onItemSelected="@{() -> programDetailObject.addWorkoutTwo()}"
+            android:spinnerMode="dialog"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/spinnerDayThree"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerDayOne"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Spinner
+            android:id="@+id/spinnerDayThree"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:adapter="@{spinneradapter}"
+            android:background="@color/white"
+            android:onItemSelected="@{() -> programDetailObject.addWorkoutThree()}"
+            android:spinnerMode="dialog"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/spinnerDayFour"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerDayTwo"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Spinner
+            android:id="@+id/spinnerDayFour"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:adapter="@{spinneradapter}"
+            android:background="@color/white"
+            android:onItemSelected="@{() -> programDetailObject.addWorkoutFour()}"
+            android:spinnerMode="dialog"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/spinnerDayFife"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerDayThree"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Spinner
+            android:id="@+id/spinnerDayFife"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:adapter="@{spinneradapter}"
+            android:background="@color/white"
+            android:onItemSelected="@{() -> programDetailObject.addWorkoutFife()}"
+            android:spinnerMode="dialog"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/spinnerDaySix"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerDayFour"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Spinner
+            android:id="@+id/spinnerDaySix"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:adapter="@{spinneradapter}"
+            android:background="@color/white"
+            android:onItemSelected="@{() -> programDetailObject.addWorkoutSix()}"
+            android:spinnerMode="dialog"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/spinnerDaySeven"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerDayFife"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Spinner
+            android:id="@+id/spinnerDaySeven"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:adapter="@{spinneradapter}"
+            android:background="@color/white"
+            android:onItemSelected="@{() -> programDetailObject.addWorkoutSeven()}"
+            android:spinnerMode="dialog"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/buttonCreateProgram"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerDaySix"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageView
+            android:id="@+id/imageViewDetailDayOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{() -> programDetailObject.showWorkouts(dayNumber1)}"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewDetailDayTwo"
+            app:layout_constraintEnd_toStartOf="@+id/spinnerDayOne"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutProgramTitle"
+            app:srcCompat="@drawable/eye_logo" />
+
+        <ImageView
+            android:id="@+id/imageViewDetailDayTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{()-> programDetailObject.showWorkouts(dayNumber2)}"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewDetailDayThree"
+            app:layout_constraintEnd_toStartOf="@+id/spinnerDayTwo"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewDetailDayOne"
+            app:srcCompat="@drawable/eye_logo" />
+
+        <ImageView
+            android:id="@+id/imageViewDetailDayThree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{()->programDetailObject.showWorkouts(dayNumber3)}"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewDetailDayFour"
+            app:layout_constraintEnd_toStartOf="@+id/spinnerDayThree"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewDetailDayTwo"
+            app:srcCompat="@drawable/eye_logo" />
+
+        <ImageView
+            android:id="@+id/imageViewDetailDayFour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{()->programDetailObject.showWorkouts(dayNumber4)}"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewDetailDayFife"
+            app:layout_constraintEnd_toStartOf="@+id/spinnerDayFour"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewDetailDayThree"
+            app:srcCompat="@drawable/eye_logo" />
+
+        <ImageView
+            android:id="@+id/imageViewDetailDayFife"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{()->programDetailObject.showWorkouts(dayNumber5)}"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewDetailDaySix"
+            app:layout_constraintEnd_toStartOf="@+id/spinnerDayFife"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewDetailDayFour"
+            app:srcCompat="@drawable/eye_logo" />
+
+        <ImageView
+            android:id="@+id/imageViewDetailDaySix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{()->programDetailObject.showWorkouts(dayNumber6)}"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewDetailDaySeven"
+            app:layout_constraintEnd_toStartOf="@+id/spinnerDaySix"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewDetailDayFife"
+            app:srcCompat="@drawable/eye_logo" />
+
+        <ImageView
+            android:id="@+id/imageViewDetailDaySeven"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{()->programDetailObject.showWorkouts(dayNumber7)}"
+            app:layout_constraintBottom_toTopOf="@+id/buttonCreateProgram"
+            app:layout_constraintEnd_toStartOf="@+id/spinnerDaySeven"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewDetailDaySix"
+            app:srcCompat="@drawable/eye_logo" />
+
+        <ImageView
+            android:id="@+id/imageViewDeleteDayOne"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="24dp"
+            android:onClick="@{()->programDetailObject.deleteWorkouts(dayNumber1)}"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewDeleteDayTwo"
+            app:layout_constraintStart_toEndOf="@+id/textInputLayoutDayOne"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutProgramTitle"
+            app:srcCompat="@drawable/delete" />
+
+        <ImageView
+            android:id="@+id/imageViewDeleteDayTwo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="24dp"
+            android:onClick="@{()->programDetailObject.deleteWorkouts(dayNumber2)}"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewDeleteDayThree"
+            app:layout_constraintStart_toEndOf="@+id/textInputLayoutDayTwo"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewDeleteDayOne"
+            app:srcCompat="@drawable/delete" />
+
+        <ImageView
+            android:id="@+id/imageViewDeleteDayThree"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="24dp"
+            android:onClick="@{()->programDetailObject.deleteWorkouts(dayNumber3)}"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewDeleteDayFour"
+            app:layout_constraintStart_toEndOf="@+id/textInputLayoutDayThree"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewDeleteDayTwo"
+            app:srcCompat="@drawable/delete" />
+
+        <ImageView
+            android:id="@+id/imageViewDeleteDayFour"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="24dp"
+            android:onClick="@{()->programDetailObject.deleteWorkouts(dayNumber4)}"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewDeleteDayFife"
+            app:layout_constraintStart_toEndOf="@+id/textInputLayoutDayFour"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewDeleteDayThree"
+            app:srcCompat="@drawable/delete" />
+
+        <ImageView
+            android:id="@+id/imageViewDeleteDayFife"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="24dp"
+            android:onClick="@{()->programDetailObject.deleteWorkouts(dayNumber5)}"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewDeleteDaySix"
+            app:layout_constraintStart_toEndOf="@+id/textInputLayoutDayFife"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewDeleteDayFour"
+            app:srcCompat="@drawable/delete" />
+
+        <ImageView
+            android:id="@+id/imageViewDeleteDaySix"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="24dp"
+            android:onClick="@{()->programDetailObject.deleteWorkouts(dayNumber6)}"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewDeleteDaySeven"
+            app:layout_constraintStart_toEndOf="@+id/textInputLayoutDaySix"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewDeleteDayFife"
+            app:srcCompat="@drawable/delete" />
+
+        <ImageView
+            android:id="@+id/imageViewDeleteDaySeven"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="24dp"
+            android:onClick="@{()->programDetailObject.deleteWorkouts(dayNumber7)}"
+            app:layout_constraintBottom_toTopOf="@+id/buttonCreateProgram"
+            app:layout_constraintStart_toEndOf="@+id/TextInputLayoutDayseven"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewDeleteDaySix"
+            app:srcCompat="@drawable/delete" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

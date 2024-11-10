@@ -7,6 +7,7 @@ import com.example.fitpath.roomDB.dao.ProgramDao
 import com.example.fitpath.roomDB.dao.WorkoutCategoryDao
 import com.example.fitpath.roomDB.dao.WorkoutDao
 import com.example.fitpath.roomDB.dao.ExerciseDao
+import com.example.fitpath.roomDB.dao.ProgramWorkoutsDao
 import com.example.fitpath.roomDB.database.roomDatabase
 import dagger.Module
 import dagger.Provides
@@ -47,5 +48,11 @@ class AppModule {
     fun provideExerciseDao(@ApplicationContext context: Context):ExerciseDao{
         val db = roomDatabase.dataBaseAccess(context)!!
         return db.getExerciseDao()
+    }
+    @Provides
+    @Singleton
+    fun provideProgramWorkoutsDao(@ApplicationContext context: Context): ProgramWorkoutsDao {
+        val db = roomDatabase.dataBaseAccess(context)!!
+        return db.getProgramWorkoutsDao()
     }
 }

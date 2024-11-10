@@ -35,7 +35,7 @@ class WeeklyProgramFragment : Fragment() {
         viewmodel.livedata.observe(viewLifecycleOwner,{list->
             Program_List = ArrayList<Program>()
             Program_List = list as ArrayList<Program>
-            adapter = ProgramAdapter(requireContext(),Program_List)
+            adapter = ProgramAdapter(requireContext(),Program_List,viewmodel)
             design.ProgramsRV.setHasFixedSize(true)
             design.adapter = adapter
         })

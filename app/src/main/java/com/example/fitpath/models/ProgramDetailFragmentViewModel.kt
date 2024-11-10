@@ -1,9 +1,15 @@
 package com.example.fitpath.models
 
+import android.content.Context
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.fitpath.classes.Program
+import com.example.fitpath.classes.ProgramWorkouts
+import com.example.fitpath.classes.Workout
 import com.example.fitpath.roomDB.dao.ProgramDao
+import com.example.fitpath.roomDB.dao.ProgramWorkoutsDao
+import com.example.fitpath.roomDB.dao.WorkoutDao
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -11,12 +17,16 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProgramDetailFragmentViewModel @Inject constructor (var dao: ProgramDao):ViewModel() {
-    var livedata = MutableLiveData<List<Program>>()
+class ProgramDetailFragmentViewModel @Inject constructor (var dao: ProgramDao, private var daoWorkout: WorkoutDao,
+                                                          private var daoProgramWorkouts: ProgramWorkoutsDao):ViewModel() {
+    var livedata = MutableLiveData<List<String>>()
+    var livedataLastID = MutableLiveData<Program>()
 
     init {
-        livedata = MutableLiveData<List<Program>>()
+        livedata = MutableLiveData<List<String>>()
+        livedataLastID = MutableLiveData<Program>()
     }
+
     fun createProgram(program_title:String,dayOne:String,dayTwo:String,dayThree:String,dayFour:String,dayFife:String,daySix:String,daySeven:String,){
         val job = CoroutineScope(Dispatchers.Main).launch {
             val program_name = program_title
@@ -31,4 +41,25 @@ class ProgramDetailFragmentViewModel @Inject constructor (var dao: ProgramDao):V
             dao.addProgram(program1)
         }
     }
+    fun allWorkouts(){
+        val job = CoroutineScope(Dispatchers.Main).launch {
+            livedata.value = daoWorkout.getWorkoutsAll()
+        }
+    }
+    fun addProgramWorkouts(program:ProgramWorkouts){
+        val job = CoroutineScope(Dispatchers.Main).launch {
+            daoProgramWorkouts.addProgramWorkout(program)
+        }
+    }
+    fun getLastId(){
+        val job = CoroutineScope(Dispatchers.Main).launch {
+            livedataLastID.value = daoProgramWorkouts.getLastID()
+        }
+    }
+    fun updateProgram(program: Program){
+        val job = CoroutineScope(Dispatchers.Main).launch {
+            dao.updateProgram(program)
+        }
+    }
+
 }

@@ -72,5 +72,11 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel:2.8.4")
     implementation("androidx.activity:activity-ktx:1.9.1")
     kapt("androidx.lifecycle:lifecycle-compiler:2.8.4")
+    //Preferences DataStore
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
+    //Lifecycle component & Kotlin Coroutines components
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
 
 }

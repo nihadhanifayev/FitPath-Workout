@@ -9,13 +9,16 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitpath.R
 import com.example.fitpath.WeeklyProgramFragmentDirections
 import com.example.fitpath.classes.Program
+import com.example.fitpath.models.WeeklyProgramFragmentViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-class ProgramAdapter(private val mContext:Context,private var Programs:List<Program>):
+class ProgramAdapter(private val mContext:Context,private var Programs:List<Program>,private var viewmodel:WeeklyProgramFragmentViewModel):
     RecyclerView.Adapter<ProgramAdapter.CardDesignObjectsPrograms>() {
 
     inner class CardDesignObjectsPrograms(design:View):RecyclerView.ViewHolder(design){
@@ -28,7 +31,6 @@ class ProgramAdapter(private val mContext:Context,private var Programs:List<Prog
             cardView = design.findViewById(R.id.cardViewProgram)
             more_image = design.findViewById(R.id.imageViewMore)
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardDesignObjectsPrograms {
@@ -59,6 +61,7 @@ class ProgramAdapter(private val mContext:Context,private var Programs:List<Prog
                         true
                     }
                     R.id.action_program_delete -> {
+                        viewmodel.deleteProgram(program)
                         true
                     }
                     else -> {false}

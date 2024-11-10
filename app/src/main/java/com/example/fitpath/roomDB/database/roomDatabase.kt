@@ -7,22 +7,25 @@ import androidx.room.RoomDatabase
 import com.example.fitpath.classes.DailyExercise
 import com.example.fitpath.classes.Exercise
 import com.example.fitpath.classes.Program
+import com.example.fitpath.classes.ProgramWorkouts
 import com.example.fitpath.classes.Workout
 import com.example.fitpath.classes.WorkoutCategory
 import com.example.fitpath.roomDB.dao.DailyExerciseDao
 import com.example.fitpath.roomDB.dao.ExerciseDao
 import com.example.fitpath.roomDB.dao.ProgramDao
+import com.example.fitpath.roomDB.dao.ProgramWorkoutsDao
 import com.example.fitpath.roomDB.dao.WorkoutCategoryDao
 import com.example.fitpath.roomDB.dao.WorkoutDao
 
 
-@Database(entities = [WorkoutCategory::class,Workout::class,Program::class,Exercise::class,DailyExercise::class], version = 1)
+@Database(entities = [WorkoutCategory::class,Workout::class,Program::class,Exercise::class,DailyExercise::class,ProgramWorkouts::class], version = 1)
 abstract class roomDatabase:RoomDatabase() {
     abstract fun getWorkoutCategoryDao():WorkoutCategoryDao
     abstract fun getWorkoutDao():WorkoutDao
     abstract fun getProgramDao():ProgramDao
     abstract fun getExerciseDao():ExerciseDao
     abstract fun getDailyExerciseDao():DailyExerciseDao
+    abstract fun getProgramWorkoutsDao():ProgramWorkoutsDao
 
 
     companion object{
@@ -38,7 +41,6 @@ abstract class roomDatabase:RoomDatabase() {
                         .build()
                 }
             }
-
             return INSTANCE
         }
     }
