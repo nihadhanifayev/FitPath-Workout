@@ -1,12 +1,9 @@
 package com.example.fitpath.adapters
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.text.TextRunShaper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
@@ -14,9 +11,6 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitpath.classes.Exercise
 import com.example.fitpath.R
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class ExerciseAdapter(private val mContext:Context,private var Exercises:List<Exercise>):
     RecyclerView.Adapter<ExerciseAdapter.CardDesignObjectsExercises>() {
@@ -46,8 +40,13 @@ class ExerciseAdapter(private val mContext:Context,private var Exercises:List<Ex
 
 
     override fun onBindViewHolder(holder: CardDesignObjectsExercises, position: Int) {
-        val exercise =Exercises.get(position)
-
+        val exercise = Exercises.get(position)
+        val exercise_rep_split = exercise.exercise_rep.split(" ")
+        val exercise_set_split = exercise.exercise_set.split(" ")
+        val exercise_weight_split = exercise.exercise_weight.split(" ")
+        var exercise_rep_text = ""
+        var exercise_weight_text = ""
+        var exercise_set_text = ""
         holder.exercise_title.text = exercise.exercise_name
         holder.imagedetail.setOnClickListener {
             val alertExerciseDetail = AlertDialog.Builder(mContext)
@@ -56,12 +55,18 @@ class ExerciseAdapter(private val mContext:Context,private var Exercises:List<Ex
             val sets: TextView = layout.findViewById(R.id.textViewExerciseSets)
             val reps:TextView = layout.findViewById(R.id.textViewExerciseReps)
             val weights:TextView = layout.findViewById(R.id.textViewExerciseWeights)
-            val rest:TextView = layout.findViewById(R.id.textViewExerciseRests)
-
-            sets.text = "Set : "+exercise.exercise_set
-            reps.text = "Reps : "+exercise.exercise_rep
-            weights.text = "Weights : "+exercise.exercise_weight
-            rest.text = "Rests : "+exercise.exercise_rest
+            for (rep in exercise_rep_split){
+                exercise_rep_text+="$rep\n\n"
+            }
+            for (weight in exercise_weight_split){
+                exercise_weight_text+="$weight\n\n"
+            }
+            for (set in exercise_set_split){
+                exercise_set_text+="$set\n\n"
+            }
+            sets.text = "${exercise_set_text}"
+            reps.text = "${exercise_rep_text}"
+            weights.text = "${exercise_weight_text}"
             alertExerciseDetail.setTitle(exercise.exercise_name)
             alertExerciseDetail.setNegativeButton("Close"){dialoginterface,i -> }
             alertExerciseDetail.setView(layout)

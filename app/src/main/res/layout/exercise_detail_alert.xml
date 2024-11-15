@@ -3,61 +3,89 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="400dp">
+    android:layout_height="300dp">
 
     <TextView
         android:id="@+id/textViewExerciseSets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginTop="47dp"
         android:padding="10dp"
         android:text="TextView"
         android:textColor="@color/PrimaryOne"
-        android:textSize="24sp"
+        android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textViewExerciseReps"
+        app:layout_constraintEnd_toStartOf="@+id/textViewExerciseReps"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewSETTITLE" />
 
     <TextView
         android:id="@+id/textViewExerciseReps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginTop="47dp"
         android:padding="10dp"
         android:text="TextView"
         android:textColor="@color/PrimaryOne"
-        android:textSize="24sp"
+        android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textViewExerciseWeights"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewExerciseSets" />
+        app:layout_constraintEnd_toStartOf="@+id/textViewExerciseWeights"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textViewExerciseSets"
+        app:layout_constraintTop_toBottomOf="@+id/textViewREPTITLE" />
 
     <TextView
         android:id="@+id/textViewExerciseWeights"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginTop="47dp"
         android:padding="10dp"
         android:text="TextView"
         android:textColor="@color/PrimaryOne"
-        android:textSize="24sp"
+        android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textViewExerciseRests"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewExerciseReps" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textViewExerciseReps"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWEIGHTTITLE" />
 
     <TextView
-        android:id="@+id/textViewExerciseRests"
+        android:id="@+id/textViewSETTITLE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:padding="10dp"
-        android:text="TextView"
-        android:textColor="@color/PrimaryOne"
-        android:textSize="24sp"
+        android:layout_marginTop="64dp"
+        android:text="SET"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewREPTITLE"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewExerciseWeights" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewREPTITLE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="REPS"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/textViewWEIGHTTITLE"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textViewSETTITLE"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewWEIGHTTITLE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="WEIGHTS"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textViewREPTITLE"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

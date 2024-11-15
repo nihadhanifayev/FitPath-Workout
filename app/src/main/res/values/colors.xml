@@ -9,6 +9,8 @@
     <color name="PrimaryFife">#059212</color>
     <color name="PrimarySix">#0990E9</color>
     <color name="PrimarySeven">#720455</color>
-    <color name="PrimaryEight">#910A67</color>
+    <color name="PrimaryEight">#8BC34A</color>
+    <color name="PrimaryNine">#FF9800</color>
+    <color name="PrimaryTen">#03DAC6</color>
 
 </resources>

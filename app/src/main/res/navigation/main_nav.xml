@@ -57,6 +57,9 @@
         <action
             android:id="@+id/workoutCategoryFragment_workoutsFragment"
             app:destination="@id/workoutsFragment" />
+        <action
+            android:id="@+id/workoutCategory_ActivityFragment"
+            app:destination="@id/activityFragment" />
     </fragment>
     <fragment
         android:id="@+id/workoutDetailFragment"
@@ -97,4 +100,14 @@
             android:name="exercise"
             app:argType="com.example.fitpath.classes.DailyExercise" />
     </fragment>
+    <fragment
+        android:id="@+id/activityFragment"
+        android:name="com.example.fitpath.ActivityFragment"
+        android:label="ActivityFragment"
+        tools:layout="@layout/fragment_activity">
+        <action
+            android:id="@+id/activityFragment_dailyExerciseFragment"
+            app:destination="@id/dailyExerciseFragment" />
+    </fragment>
+
 </navigation>

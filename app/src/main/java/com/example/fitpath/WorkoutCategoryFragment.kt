@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitpath.adapters.WorkoutCategoryAdapter
 import com.example.fitpath.classes.Workout
@@ -34,6 +35,7 @@ class WorkoutCategoryFragment : Fragment() {
     private lateinit var db:roomDatabase
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         design = DataBindingUtil.inflate(inflater,R.layout.fragment_workout_category,container,false)
+        design.workoutCategoryObject = this
         db = roomDatabase.dataBaseAccess(requireContext())!!
         dao = db.getWorkoutDao()
         Categories = ArrayList<WorkoutCategory>()
@@ -44,7 +46,11 @@ class WorkoutCategoryFragment : Fragment() {
             design.WorkoutCategoryRv.setHasFixedSize(true)
             design.adapter = adapter
         })
+
         return design.root
+    }
+    fun goTrainingFragment(){
+        Navigation.findNavController(design.buttonTrainingFragment).navigate(R.id.workoutCategory_ActivityFragment)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

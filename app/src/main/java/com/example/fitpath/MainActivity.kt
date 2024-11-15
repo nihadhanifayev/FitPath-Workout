@@ -22,8 +22,4 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.navhostfragment) as NavHostFragment
         NavigationUI.setupWithNavController(design.bottomnav,navHostFragment.navController)
     }
-    fun fabClickButton(){
-        val intent = Intent(this,ActivityTraining::class.java)
-        startActivity(intent)
-    }
 }
