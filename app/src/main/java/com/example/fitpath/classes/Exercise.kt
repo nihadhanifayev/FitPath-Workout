@@ -13,7 +13,6 @@ data class Exercise(
     @ColumnInfo("exercise_name") @NotNull var exercise_name:String,
     @ColumnInfo("exercise_set") @NotNull var exercise_set:String,
     @ColumnInfo("exercise_rep") @NotNull var exercise_rep:String,
-    @ColumnInfo("exercise_weight") @NotNull var exercise_weight:String,
-    @ColumnInfo("exercise_rest") @NotNull var exercise_rest:String){
+    @ColumnInfo("exercise_weight") @NotNull var exercise_weight:String){
 
 }

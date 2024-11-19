@@ -28,13 +28,13 @@ class DailyExerciseFragment : Fragment() {
     private lateinit var viewmodel:DailyExerciseFragmentViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         design = DataBindingUtil.inflate(inflater,R.layout.fragment_daily_exercise,container,false)
-        viewmodel.getDailyExercises()
         viewmodel.livedata.observe(viewLifecycleOwner,{list->
             DailyExercises = list as ArrayList<DailyExercise>
             adapter = DailyExerciseAdapter(requireContext(),DailyExercises)
             design.DailyExerciseRv.setHasFixedSize(true)
             design.adapter = adapter
         })
+        viewmodel.getDailyExercises()
         return design.root
     }
 

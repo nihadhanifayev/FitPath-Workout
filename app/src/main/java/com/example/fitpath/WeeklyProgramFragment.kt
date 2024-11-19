@@ -31,7 +31,7 @@ class WeeklyProgramFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         design = DataBindingUtil.inflate(inflater,R.layout.fragment_weekly_program,container,false)
         design.weeklyprogramfragmentobject = this
-        viewmodel.getPrograms()
+
         viewmodel.livedata.observe(viewLifecycleOwner) { list ->
             Program_List = ArrayList<Program>()
             Program_List = list as ArrayList<Program>
@@ -39,6 +39,7 @@ class WeeklyProgramFragment : Fragment() {
             design.ProgramsRV.setHasFixedSize(true)
             design.adapter = adapter
         }
+        viewmodel.getPrograms()
         return design.root
     }
     fun fabClick(){

@@ -66,7 +66,6 @@ class ActivityFragment : Fragment() {
         repList = ArrayList<String>()
         weightList = ArrayList<String>()
         spinnerContent()
-        viewmodel.getLastID()
         adapter = ExerciseAdapter(requireContext(),exercises)
         set_adapter = SetAdapter(requireContext(),setList)
         design.recyclerViewSets.setHasFixedSize(true)
@@ -121,6 +120,7 @@ class ActivityFragment : Fragment() {
             design.buttonTraining.setBackgroundColor(resources.getColor(R.color.PrimaryFife))
             design.buttonTraining.setText("Start Training")
             timer.cancel()
+            viewmodel.getLastID()
             //update daily exercise
             val calendar = Calendar.getInstance()
             val day1 = calendar.get(Calendar.DAY_OF_MONTH)
@@ -206,7 +206,7 @@ class ActivityFragment : Fragment() {
                     val exercise = Exercise(
                         0,
                         lastID.exercise_daily_id,
-                        exercise_Title,final_set,final_rep,final_weight,"1")
+                        exercise_Title,final_set,final_rep,final_weight)
                     exercises.add(exercise)
                     viewmodel.addExercise(exercise)
                     design.textViewExerciseText.setText(R.string.Empty)
