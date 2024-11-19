@@ -80,7 +80,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/PrimaryFife"
             android:onClick="@{() -> activitytrainingobject.buttonTraining()}"
-            android:text="@string/TariningButtonText"
+            android:text="@string/TrainingButtonText"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="20sp"

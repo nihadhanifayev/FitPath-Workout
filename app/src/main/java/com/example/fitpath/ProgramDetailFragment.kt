@@ -56,8 +56,15 @@ class ProgramDetailFragment : Fragment() {
         design = DataBindingUtil.inflate(inflater,R.layout.fragment_program_detail,container,false)
         design.programDetailObject = this
         viewmodel.allWorkouts()
+        val bundle:ProgramDetailFragmentArgs by navArgs()
+        val program = bundle.program
+        if (program != null){
+            design.buttonCreateProgram.text = "CHANGE"
+            design.program = program
+        }else{
+            viewmodel.createProgram(" "," "," "," "," "," "," "," ")
+        }
         lastProgramId = Program(0,"","","","","","","","")
-        viewmodel.createProgram(" "," "," "," "," "," "," "," ")
         selectedWorkoutsOne = ArrayList<String>()
         selectedWorkoutsTwo = ArrayList<String>()
         selectedWorkoutsThree = ArrayList<String>()
@@ -75,12 +82,6 @@ class ProgramDetailFragment : Fragment() {
         viewmodel.livedataLastID.observe(viewLifecycleOwner) {LID->
             lastProgramId=LID
             Log.e("ID",lastProgramId.program_id.toString())
-        }
-        val bundle:ProgramDetailFragmentArgs by navArgs()
-        val program = bundle.program
-        if (program != null){
-            design.buttonCreateProgram.text = "CHANGE"
-            design.program = program
         }
         viewmodel.livedata.observe(viewLifecycleOwner,{listWorkout->
             spinnerAdapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,android.R.id.text1,listWorkout)
@@ -104,7 +105,7 @@ class ProgramDetailFragment : Fragment() {
         alertD2.setTitle("Information")
         alertD2.setMessage("Are you sure you want to record the program?")
 
-        alertD2.setPositiveButton("Go Back") { dialoginterface, i ->
+        alertD2.setPositiveButton("Ok") { dialoginterface, i ->
             update_and_program_workouts(program_title,day1,day2,day3,day4,day5,day6,day7)
             Navigation.findNavController(design.buttonCreateProgram).navigate(R.id.programDetailF_weeklyProgram)
         }

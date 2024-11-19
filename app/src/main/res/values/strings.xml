@@ -5,8 +5,8 @@
     <string name="ProgramsInfo">Create your Programs</string>
     <string name="DailyExerciseFragmentHeader">Daily Exercise</string>
     <string name="ExerciseFragmentHeader">Exercise</string>
-    <string name="TariningButtonText">Start Training</string>
-    <string name="CaloriCalculatorHeader">Calculate your daily calories</string>
+    <string name="TrainingButtonText">Start Training</string>
+    <string name="CalorieCalculatorHeader">Calculate your daily calories</string>
     <string name="CalculateButtonText">Calculate</string>
     <string name="CalculateResult">Result</string>
     <string name="AddExerciseHeader">Add Exercise</string>

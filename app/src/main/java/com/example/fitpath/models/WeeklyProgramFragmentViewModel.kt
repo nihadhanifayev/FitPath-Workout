@@ -27,6 +27,7 @@ class WeeklyProgramFragmentViewModel @Inject constructor (var dao: ProgramDao):V
     fun deleteProgram(program: Program){
         val job = CoroutineScope(Dispatchers.Main).launch {
             dao.deleteProgram(program)
+            getPrograms()
         }
     }
 }

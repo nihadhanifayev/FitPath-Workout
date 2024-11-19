@@ -49,6 +49,9 @@ class ExerciseAdapter(private val mContext:Context,private var Exercises:List<Ex
         var exercise_set_text = ""
         holder.exercise_title.text = exercise.exercise_name
         holder.imagedetail.setOnClickListener {
+            exercise_rep_text = ""
+            exercise_weight_text = ""
+            exercise_set_text = ""
             val alertExerciseDetail = AlertDialog.Builder(mContext)
             val layout = LayoutInflater.from(mContext).inflate(R.layout.exercise_detail_alert,null)
 

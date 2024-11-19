@@ -22,21 +22,21 @@ class CalorieCalculatorFragmentViewModel:ViewModel() {
         BMI.value = BMIResult
 
         if (BMIResult.toDouble()<16){
-            BMIResultLiveData.value = "Status : Severe thinness"
+            BMIResultLiveData.value = "Severe thinness"
         }else if (BMIResult.toDouble()<17){
-            BMIResultLiveData.value = "Status : Moderate thinness"
+            BMIResultLiveData.value = "Moderate thinness"
         }else if (BMIResult.toDouble()<18.4){
-            BMIResultLiveData.value = "Status : Mild thinness"
+            BMIResultLiveData.value = "Mild thinness"
         }else if (BMIResult.toDouble()<24.9){
-            BMIResultLiveData.value = "Status : Normal range"
+            BMIResultLiveData.value = "Normal range"
         }else if (BMIResult.toDouble()<29.9){
-            BMIResultLiveData.value = "Status : Overweight (Pre-obese)"
+            BMIResultLiveData.value = "Overweight (Pre-obese)"
         }else if (BMIResult.toDouble()<34.9){
-            BMIResultLiveData.value = "Status : Obese (Class I)"
+            BMIResultLiveData.value = "Obese (Class I)"
         }else if (BMIResult.toDouble()<39.9){
-            BMIResultLiveData.value = "Status : Obese (Class II)"
+            BMIResultLiveData.value = "Obese (Class II)"
         }else if (BMIResult.toDouble()>=40){
-            BMIResultLiveData.value = "Status : Obese (Class III)"
+            BMIResultLiveData.value = "Obese (Class III)"
         }
         val manBMR  = 66.5+(13.75*weight.toDouble()) + (5*splitheight.toInt()) - (6.77*age.toDouble())
         val womanBMR  = 655.1+(9.56*weight.toDouble()) + (1.85*splitheight.toInt()) - (4.67*age.toDouble())

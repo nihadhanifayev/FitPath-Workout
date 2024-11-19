@@ -1,19 +1,17 @@
 package com.example.fitpath
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.fitpath.databinding.FragmentCaloriCalculatorBinding
 import com.example.fitpath.models.CalorieCalculatorFragmentViewModel
 
 
-class CaloriCalculatorFragment : Fragment() {
+class CalorieCalculatorFragment : Fragment() {
     private lateinit var design:FragmentCaloriCalculatorBinding
     private lateinit var viewmodel:CalorieCalculatorFragmentViewModel
     private var manRadioButtonStatus = false
@@ -26,18 +24,15 @@ class CaloriCalculatorFragment : Fragment() {
         design = DataBindingUtil.inflate(inflater,R.layout.fragment_calori_calculator,container,false)
         design.caloriecalculatorfragmentobject = this
 
-        viewmodel.BMIResultLiveData.observe(viewLifecycleOwner,{bmiresult->
+        viewmodel.BMIResultLiveData.observe(viewLifecycleOwner) { bmiresult ->
             design.bmiResult = bmiresult
-            Log.e("bmiresult",bmiresult)
-        })
-        viewmodel.DailyCalorieLiveData.observe(viewLifecycleOwner,{dailycalorie->
+        }
+        viewmodel.DailyCalorieLiveData.observe(viewLifecycleOwner) { dailycalorie ->
             design.dailyCalorie = dailycalorie
-            Log.e("dailycalorie",dailycalorie)
-        })
-        viewmodel.BMI.observe(viewLifecycleOwner,{bmi->
+        }
+        viewmodel.BMI.observe(viewLifecycleOwner) { bmi ->
             design.bmi = bmi
-            Log.e("bmi",bmi.toString())
-        })
+        }
         return design.root
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +52,6 @@ class CaloriCalculatorFragment : Fragment() {
                 viewmodel.calorieCalculate(age,height,weight,"man","one")
             }
             if (activityTwo){
-                Log.e("fun","working")
                 viewmodel.calorieCalculate(age,height,weight,"man","two")
             }
             if (activityThree){

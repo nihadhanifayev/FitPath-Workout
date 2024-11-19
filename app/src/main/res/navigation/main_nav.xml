@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/caloriCalculatorFragment"
-        android:name="com.example.fitpath.CaloriCalculatorFragment"
+        android:name="com.example.fitpath.CalorieCalculatorFragment"
         android:label="fragment_calori_calculator"
         tools:layout="@layout/fragment_calori_calculator" />
     <fragment
@@ -42,7 +42,9 @@
         tools:layout="@layout/fragment_program_detail" >
         <action
             android:id="@+id/programDetailF_weeklyProgram"
-            app:destination="@id/weeklyProgramFragment" />
+            app:destination="@id/weeklyProgramFragment"
+            app:popUpTo="@id/programDetailFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="program"
             app:argType="com.example.fitpath.classes.Program"
@@ -95,7 +97,9 @@
         tools:layout="@layout/fragment_daily_exercise_detail" >
         <action
             android:id="@+id/dailyExerciseDetail_DailyExercise"
-            app:destination="@id/dailyExerciseFragment" />
+            app:destination="@id/dailyExerciseFragment"
+            app:popUpTo="@id/dailyExerciseDetailFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="exercise"
             app:argType="com.example.fitpath.classes.DailyExercise" />
@@ -107,7 +111,9 @@
         tools:layout="@layout/fragment_activity">
         <action
             android:id="@+id/activityFragment_dailyExerciseFragment"
-            app:destination="@id/dailyExerciseFragment" />
+            app:destination="@id/dailyExerciseFragment"
+            app:popUpTo="@id/activityFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>

@@ -32,13 +32,13 @@ class WeeklyProgramFragment : Fragment() {
         design = DataBindingUtil.inflate(inflater,R.layout.fragment_weekly_program,container,false)
         design.weeklyprogramfragmentobject = this
         viewmodel.getPrograms()
-        viewmodel.livedata.observe(viewLifecycleOwner,{list->
+        viewmodel.livedata.observe(viewLifecycleOwner) { list ->
             Program_List = ArrayList<Program>()
             Program_List = list as ArrayList<Program>
-            adapter = ProgramAdapter(requireContext(),Program_List,viewmodel)
+            adapter = ProgramAdapter(requireContext(), Program_List, viewmodel)
             design.ProgramsRV.setHasFixedSize(true)
             design.adapter = adapter
-        })
+        }
         return design.root
     }
     fun fabClick(){

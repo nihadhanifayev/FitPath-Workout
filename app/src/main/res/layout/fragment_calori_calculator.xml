@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="caloriecalculatorfragmentobject" type="com.example.fitpath.CaloriCalculatorFragment" />
+        <variable name="caloriecalculatorfragmentobject" type="com.example.fitpath.CalorieCalculatorFragment" />
         <variable name="BMI" type="Integer" />
         <variable name="BMIResult" type="String" />
         <variable name="DailyCalorie" type="String" />
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/PrimaryOne"
-        tools:context=".CaloriCalculatorFragment">
+        tools:context=".CalorieCalculatorFragment">
 
         <TextView
             android:id="@+id/textViewCaloriCalcİnfo"
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:text="@string/CaloriCalculatorHeader"
+            android:text="@string/CalorieCalculatorHeader"
             android:textAllCaps="true"
             android:textColor="@color/PrimarySix"
             android:textSize="20sp"
@@ -202,12 +202,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="32dp"
                     android:text="@{DailyCalorie}"
                     android:textColor="@color/PrimaryOne"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textViewCalorie"
                     app:layout_constraintTop_toBottomOf="@+id/textViewResult" />
 
                 <TextView
@@ -220,21 +220,60 @@
                     android:textColor="@color/PrimaryOne"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textViewBMIText"
                     app:layout_constraintTop_toBottomOf="@+id/textViewDailyCalori" />
 
                 <TextView
                     android:id="@+id/textViewBMIResult"
                     android:layout_width="180dp"
                     android:layout_height="80dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="@{BMIResult}"
                     android:textColor="@color/PrimaryOne"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewBMI" />
+                    app:layout_constraintTop_toBottomOf="@+id/textViewBMIRESULT" />
+
+                <TextView
+                    android:id="@+id/textViewCalorie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:text="Calorie : "
+                    android:textColor="@color/PrimaryOne"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewResult" />
+
+                <TextView
+                    android:id="@+id/textViewBMIText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:text="BMI : "
+                    android:textColor="@color/PrimaryOne"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewCalorie" />
+
+                <TextView
+                    android:id="@+id/textViewBMIRESULT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="BMI Result"
+                    android:textColor="@color/design_default_color_error"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewBMIText" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 

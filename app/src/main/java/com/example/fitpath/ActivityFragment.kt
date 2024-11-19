@@ -164,16 +164,15 @@ class ActivityFragment : Fragment() {
     }
     fun addExercise(){
         if (!exercise_status){
-            exercise_status = true
-            design.buttonAddSet.visibility = View.VISIBLE
-            design.buttonAddExercise.setText("CONFİRM EXERCISE")
-            design.buttonAddExercise.setBackgroundColor(Color.GREEN)
             val alertExerciseName = AlertDialog.Builder(requireContext())
             val design2 = LayoutInflater.from(requireContext()).inflate(R.layout.alert_exercise_name,null)
             val exercise_name = design2.findViewById(R.id.textExerciseNameAlert) as EditText
             alertExerciseName.setTitle("Add Exercise Name")
             alertExerciseName.setView(design2)
             alertExerciseName.setPositiveButton("Ok"){dialoginterface,i ->
+                exercise_status = true
+                design.buttonAddExercise.setText("CONFİRM EXERCISE")
+                design.buttonAddExercise.setBackgroundColor(Color.GREEN)
                 exercise_Title = exercise_name.text.toString()
                 design.textViewExerciseText.text = exercise_Title
                 design.textViewExerciseText.visibility = View.VISIBLE
