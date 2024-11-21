@@ -47,4 +47,5 @@ class SetAdapter(private var mContext:Context,private var SetList:List<Set>):Rec
         holder.SetText.text = "SET ${set.set_no}"
     }
 
+
 }

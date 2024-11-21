@@ -45,7 +45,7 @@ class WorkoutsAdapter(private var mContext:Context,private var Workouts:List<Wor
         holder.workoutTitle.text = workout.workout
         holder.workoutInfo.text = workout.workoutInfo
         holder.workoutImage.setImageResource(mContext.resources.getIdentifier(workout.workoutImage,"drawable",mContext.packageName))
-
+        holder.cardViewWorkout.startAnimation(android.view.animation.AnimationUtils.loadAnimation(holder.itemView.context,R.anim.workout_small_pic_anim))
         holder.cardViewWorkout.setOnClickListener {
             val send_exercise = WorkoutsFragmentDirections.workoutsFragmentWorkoutDetailFragment(workout)
             Navigation.findNavController(it).navigate(send_exercise)

@@ -7,8 +7,6 @@
         <variable name="activitytrainingobject" type="com.example.fitpath.ActivityFragment" />
         <variable name="adapter" type="com.example.fitpath.adapters.ExerciseAdapter" />
         <variable name="adapterSet" type="com.example.fitpath.adapters.SetAdapter" />
-        <variable name="repList" type="android.widget.ArrayAdapter" />
-        <variable name="weightList" type="android.widget.ArrayAdapter" />
         <variable name="set" type="String" />
     </data>
 
@@ -144,56 +142,6 @@
                     app:layout_constraintStart_toEndOf="@+id/textView2"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Spinner
-                    android:id="@+id/spinnerReps"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:adapter="@{repList}"
-                    android:onItemSelected="@{() -> activitytrainingobject.addRep()}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:ignore="TouchTargetSizeCheck" />
-
-                <Spinner
-                    android:id="@+id/spinnerWeights"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="34dp"
-                    android:layout_marginBottom="16dp"
-                    android:adapter="@{weightList}"
-                    android:onItemSelected="@{() -> activitytrainingobject.addWeight()}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    tools:ignore="TouchTargetSizeCheck" />
-
-                <TextView
-                    android:id="@+id/textViewRepsText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="Reps"
-                    android:textColor="@color/PrimarySix"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/spinnerReps"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/textViewWeightsText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="165dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="Weights"
-                    android:textColor="@color/PrimarySix"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/spinnerWeights"
-                    app:layout_constraintStart_toEndOf="@+id/textViewRepsText" />
-
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
@@ -207,6 +155,32 @@
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/editTextRep"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:ems="10"
+                    android:hint="Rep"
+                    android:inputType="text"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <EditText
+                    android:id="@+id/editTextWeight"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:ems="10"
+                    android:hint="Weight"
+                    android:inputType="text"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="TouchTargetSizeCheck" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

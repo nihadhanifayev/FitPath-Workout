@@ -1,5 +1,6 @@
 package com.example.fitpath.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitpath.classes.Exercise
 import com.example.fitpath.R
+import java.util.Locale
 
 class ExerciseAdapter(private val mContext:Context,private var Exercises:List<Exercise>):
     RecyclerView.Adapter<ExerciseAdapter.CardDesignObjectsExercises>() {
@@ -37,6 +39,7 @@ class ExerciseAdapter(private val mContext:Context,private var Exercises:List<Ex
     override fun getItemCount(): Int {
         return Exercises.size
     }
+
 
 
     override fun onBindViewHolder(holder: CardDesignObjectsExercises, position: Int) {
@@ -70,7 +73,7 @@ class ExerciseAdapter(private val mContext:Context,private var Exercises:List<Ex
             sets.text = "${exercise_set_text}"
             reps.text = "${exercise_rep_text}"
             weights.text = "${exercise_weight_text}"
-            alertExerciseDetail.setTitle(exercise.exercise_name)
+            alertExerciseDetail.setTitle(exercise.exercise_name.toUpperCase(Locale.ROOT))
             alertExerciseDetail.setNegativeButton("Close"){dialoginterface,i -> }
             alertExerciseDetail.setView(layout)
             alertExerciseDetail.show()

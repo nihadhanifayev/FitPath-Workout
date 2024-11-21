@@ -35,10 +35,6 @@ class ActivityFragment : Fragment() {
     private lateinit var timer: CountDownTimer
     private lateinit var lastID: DailyExercise
     private lateinit var viewmodel: ActivityTrainingViewModel
-    private lateinit var spinnerAdapterRep: ArrayAdapter<String>
-    private lateinit var spinnerAdapterWeight:ArrayAdapter<String>
-    private lateinit var repList:ArrayList<String>
-    private lateinit var weightList:ArrayList<String>
     private var rep : String = ""
     private var final_rep : String = ""
     private var weight : String = ""
@@ -63,9 +59,6 @@ class ActivityFragment : Fragment() {
         design.buttonAddSet.setBackgroundColor(Color.CYAN)
         exercises = ArrayList<Exercise>()
         setList = ArrayList<Set>()
-        repList = ArrayList<String>()
-        weightList = ArrayList<String>()
-        spinnerContent()
         adapter = ExerciseAdapter(requireContext(),exercises)
         set_adapter = SetAdapter(requireContext(),setList)
         design.recyclerViewSets.setHasFixedSize(true)
@@ -177,6 +170,7 @@ class ActivityFragment : Fragment() {
                 design.textViewExerciseText.text = exercise_Title
                 design.textViewExerciseText.visibility = View.VISIBLE
                 design.buttonAddSet.visibility = View.VISIBLE
+                setList.clear()
             }
             alertExerciseName.setNegativeButton("Cancel"){dialoginterface,i ->
 
@@ -216,7 +210,7 @@ class ActivityFragment : Fragment() {
                     final_weight = ""
                     final_rep = ""
                     final_set = ""
-                    setList.clear()
+
                 }
                 alertD.setNegativeButton("Cancel"){dialoginterface,i -> }
                 alertD.show()
@@ -234,40 +228,27 @@ class ActivityFragment : Fragment() {
             design.buttonAddSet.setBackgroundColor(Color.YELLOW)
             design.cardViewExercise.visibility = View.VISIBLE
         }else{
+            addRep()
+            addWeight()
             set_status = false
             design.buttonAddSet.setText("ADD SET")
             val set = Set(set.toString(),rep,weight)
             setList.add(set)
             design.buttonAddSet.setBackgroundColor(Color.CYAN)
             design.cardViewExercise.visibility = View.INVISIBLE
+            design.editTextRep.setText("")
+            design.editTextWeight.setText("")
         }
-    }
-    fun spinnerContent(){
-        for (i in 1..30){
-            repList.add(i.toString())
-        }
-        for (i in 1..200){
-            weightList.add(i.toString())
-        }
-        spinnerAdapterRep = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,android.R.id.text1,repList)
-        spinnerAdapterWeight = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,android.R.id.text1,weightList)
-        design.repList = spinnerAdapterRep
-        design.weightList = spinnerAdapterWeight
     }
     fun addRep(){
-        design.spinnerReps.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                rep = repList[position]
-                final_rep+="$rep "
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {} }}
+        rep = design.editTextRep.text.toString()
+        final_rep+="$rep "
+        }
     fun addWeight(){
-        design.spinnerWeights.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                weight = weightList[position]
-                final_weight+="$weight "
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {} }}
+        weight = design.editTextWeight.text.toString()
+        final_weight+="$weight "
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val tempViewModel:ActivityTrainingViewModel by viewModels()
