@@ -185,7 +185,7 @@ class ActivityFragment : Fragment() {
             }else{
                 design.buttonAddExercise.setText("ADD EXERCISE")
                 val alertD = AlertDialog.Builder(requireContext())
-                alertD.setMessage("Are you sure you want to record the program?")
+                alertD.setMessage("Are you sure you want to record the exercise?")
                 alertD.setTitle("Add Exercise")
                 viewmodel.getLastID()
                 alertD.setPositiveButton("Ok"){dialoginterface,i ->

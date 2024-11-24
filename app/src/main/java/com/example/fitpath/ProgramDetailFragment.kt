@@ -81,7 +81,6 @@ class ProgramDetailFragment : Fragment() {
         design.dayNumber7 = "7"
         viewmodel.livedataLastID.observe(viewLifecycleOwner) {LID->
             lastProgramId=LID
-            Log.e("ID",lastProgramId.program_id.toString())
         }
         viewmodel.livedata.observe(viewLifecycleOwner,{listWorkout->
             spinnerAdapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,android.R.id.text1,listWorkout)
@@ -107,7 +106,11 @@ class ProgramDetailFragment : Fragment() {
 
         alertD2.setPositiveButton("Ok") { dialoginterface, i ->
             update_and_program_workouts(program_title,day1,day2,day3,day4,day5,day6,day7)
-            Navigation.findNavController(design.buttonCreateProgram).navigate(R.id.programDetailF_weeklyProgram)
+            design.progressBarCreate.visibility = View.VISIBLE
+            Handler().postDelayed({
+                Navigation.findNavController(design.buttonCreateProgram).navigate(R.id.programDetailF_weeklyProgram)
+
+            },3000)
         }
         alertD2.setNegativeButton("Cancel"){dialoginterface,i -> }
         alertD2.show()

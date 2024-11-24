@@ -42,8 +42,10 @@ class WorkoutsAdapter(private var mContext:Context,private var Workouts:List<Wor
 
     override fun onBindViewHolder(holder: CardDesignObjectsWorkout, position: Int) {
         val workout = Workouts.get(position)
+        val readMore:String = "READ MORE"
+
         holder.workoutTitle.text = workout.workout
-        holder.workoutInfo.text = workout.workoutInfo
+        holder.workoutInfo.text = "${workout.workoutInfo.subSequence(0,80)} ... ${readMore}"
         holder.workoutImage.setImageResource(mContext.resources.getIdentifier(workout.workoutImage,"drawable",mContext.packageName))
         holder.cardViewWorkout.startAnimation(android.view.animation.AnimationUtils.loadAnimation(holder.itemView.context,R.anim.workout_small_pic_anim))
         holder.cardViewWorkout.setOnClickListener {
