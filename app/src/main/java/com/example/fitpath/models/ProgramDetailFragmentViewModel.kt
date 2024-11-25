@@ -21,10 +21,12 @@ class ProgramDetailFragmentViewModel @Inject constructor (var dao: ProgramDao, p
                                                           private var daoProgramWorkouts: ProgramWorkoutsDao):ViewModel() {
     var livedata = MutableLiveData<List<String>>()
     var livedataLastID = MutableLiveData<Program>()
+    var livedataLastProgramWorkouts = MutableLiveData<List<ProgramWorkouts>>()
 
     init {
         livedata = MutableLiveData<List<String>>()
         livedataLastID = MutableLiveData<Program>()
+        livedataLastProgramWorkouts = MutableLiveData<List<ProgramWorkouts>>()
     }
 
     fun createProgram(program_title:String,dayOne:String,dayTwo:String,dayThree:String,dayFour:String,dayFife:String,daySix:String,daySeven:String,){
@@ -59,6 +61,11 @@ class ProgramDetailFragmentViewModel @Inject constructor (var dao: ProgramDao, p
     fun updateProgram(program: Program){
         val job = CoroutineScope(Dispatchers.Main).launch {
             dao.updateProgram(program)
+        }
+    }
+    fun getProgramWorkoutWithID(id:Int){
+        val job = CoroutineScope(Dispatchers.Main).launch{
+            livedataLastProgramWorkouts.value = daoProgramWorkouts.getProgramIDWorkoutsWithPW(id)
         }
     }
 

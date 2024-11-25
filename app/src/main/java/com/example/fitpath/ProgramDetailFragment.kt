@@ -56,15 +56,6 @@ class ProgramDetailFragment : Fragment() {
         design = DataBindingUtil.inflate(inflater,R.layout.fragment_program_detail,container,false)
         design.programDetailObject = this
         viewmodel.allWorkouts()
-        val bundle:ProgramDetailFragmentArgs by navArgs()
-        val program = bundle.program
-        if (program != null){
-            design.buttonCreateProgram.text = "CHANGE"
-            design.program = program
-        }else{
-            viewmodel.createProgram(" "," "," "," "," "," "," "," ")
-        }
-        lastProgramId = Program(0,"","","","","","","","")
         selectedWorkoutsOne = ArrayList<String>()
         selectedWorkoutsTwo = ArrayList<String>()
         selectedWorkoutsThree = ArrayList<String>()
@@ -72,6 +63,49 @@ class ProgramDetailFragment : Fragment() {
         selectedWorkoutsFife = ArrayList<String>()
         selectedWorkoutsSix = ArrayList<String>()
         selectedWorkoutsSeven = ArrayList<String>()
+        val bundle:ProgramDetailFragmentArgs by navArgs()
+        val program = bundle.program
+        if (program != null){
+            selectedWorkoutsOne.clear()
+            selectedWorkoutsTwo.clear()
+            selectedWorkoutsThree.clear()
+            selectedWorkoutsFour.clear()
+            selectedWorkoutsFife.clear()
+            selectedWorkoutsSix.clear()
+            selectedWorkoutsSeven.clear()
+            design.buttonCreateProgram.text = "CHANGE"
+            design.program = program
+            viewmodel.livedataLastProgramWorkouts.observe(viewLifecycleOwner) {workoutList->
+                for (workout in workoutList){
+                    if (workout.program_workout_day == 1){
+                        selectedWorkoutsOne.add(workout.workout_name)
+                    }
+                    if (workout.program_workout_day == 2){
+                        selectedWorkoutsTwo.add(workout.workout_name)
+                    }
+                    if (workout.program_workout_day == 3){
+                        selectedWorkoutsThree.add(workout.workout_name)
+                    }
+                    if (workout.program_workout_day == 4){
+                        selectedWorkoutsFour.add(workout.workout_name)
+                    }
+                    if (workout.program_workout_day == 5){
+                        selectedWorkoutsFife.add(workout.workout_name)
+                    }
+                    if (workout.program_workout_day == 6){
+                        selectedWorkoutsSix.add(workout.workout_name)
+                    }
+                    if (workout.program_workout_day == 7){
+                        selectedWorkoutsSeven.add(workout.workout_name)
+                    }
+                }
+            }
+            viewmodel.getProgramWorkoutWithID(program.program_id)
+
+        }else{
+            viewmodel.createProgram(" "," "," "," "," "," "," "," ")
+        }
+        lastProgramId = Program(0,"","","","","","","","")
         design.dayNumber1 = "1"
         design.dayNumber2 = "2"
         design.dayNumber3 = "3"
@@ -109,7 +143,6 @@ class ProgramDetailFragment : Fragment() {
             design.progressBarCreate.visibility = View.VISIBLE
             Handler().postDelayed({
                 Navigation.findNavController(design.buttonCreateProgram).navigate(R.id.programDetailF_weeklyProgram)
-
             },3000)
         }
         alertD2.setNegativeButton("Cancel"){dialoginterface,i -> }
@@ -126,7 +159,6 @@ class ProgramDetailFragment : Fragment() {
     fun addProgramWorkouts(){
         for (one in selectedWorkoutsOne) {
             val programWorkouts = ProgramWorkouts(0, lastProgramId.program_id, one, 1)
-            Log.e("test",lastProgramId.program_id.toString())
             viewmodel.addProgramWorkouts(programWorkouts)
         }
         for (two in selectedWorkoutsTwo) {

@@ -1,12 +1,14 @@
 package com.example.fitpath.adapters
 
 import android.content.Context
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.findViewTreeLifecycleOwner
@@ -25,11 +27,13 @@ class ProgramAdapter(private val mContext:Context,private var Programs:List<Prog
         val program_name:TextView
         val cardView:CardView
         val more_image:ImageView
+        val progressBar:ProgressBar
 
         init {
             program_name = design.findViewById(R.id.textViewProgramTitle)
             cardView = design.findViewById(R.id.cardViewProgram)
             more_image = design.findViewById(R.id.imageViewMore)
+            progressBar = design.findViewById(R.id.progressBarProgramChange)
         }
     }
 
@@ -44,7 +48,7 @@ class ProgramAdapter(private val mContext:Context,private var Programs:List<Prog
 
     override fun onBindViewHolder(holder: CardDesignObjectsPrograms, position: Int) {
         val program = Programs.get(position)
-
+        holder.progressBar.visibility = View.INVISIBLE
         holder.program_name.text = program.program_name
         holder.cardView.setOnClickListener {
             val transition = WeeklyProgramFragmentDirections.weeklyProgramFProgramOverview(program)
@@ -57,7 +61,8 @@ class ProgramAdapter(private val mContext:Context,private var Programs:List<Prog
             popupmenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
                 when(item.itemId){
                     R.id.action_program_change -> {
-                        Navigation.findNavController(it).navigate(transition1)
+                        holder.progressBar.visibility = View.VISIBLE
+                        Handler().postDelayed({Navigation.findNavController(it).navigate(transition1)},3000)
                         true
                     }
                     R.id.action_program_delete -> {
