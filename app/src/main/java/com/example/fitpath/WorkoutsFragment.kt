@@ -14,13 +14,9 @@ import com.example.fitpath.adapters.WorkoutsAdapter
 import com.example.fitpath.classes.Workout
 import com.example.fitpath.databinding.FragmentWorkoutsBinding
 import com.example.fitpath.models.WorkoutsFragmentViewModel
-import com.example.fitpath.roomDB.dao.WorkoutDao
-import com.example.fitpath.roomDB.database.roomDatabase
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.currentCoroutineContext
-import kotlinx.coroutines.launch
+
+
 
 @AndroidEntryPoint
 class WorkoutsFragment : Fragment() {
@@ -40,6 +36,7 @@ class WorkoutsFragment : Fragment() {
             design.WorkoutRV.setHasFixedSize(true)
             design.workoutsAdapter = adapter
         })
+
         return design.root
     }
 
