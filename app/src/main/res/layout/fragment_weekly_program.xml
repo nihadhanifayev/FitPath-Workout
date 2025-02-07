@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="adapter" type="com.example.fitpath.adapters.ProgramAdapter" />
-        <variable name="weeklyprogramfragmentobject" type="com.example.fitpath.WeeklyProgramFragment" />
+        <variable name="adapter" type="com.example.fitpath.ui.adapters.ProgramAdapter" />
+        <variable name="weeklyprogramfragmentobject" type="com.example.fitpath.ui.view.WeeklyProgramFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/PrimaryOne"
-        tools:context=".WeeklyProgramFragment">
+        tools:context=".ui.view.WeeklyProgramFragment">
 
         <TextView
             android:id="@+id/textViewProgramsFragmentTitle"

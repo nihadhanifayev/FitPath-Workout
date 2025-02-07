@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="workoutsAdapter" type="com.example.fitpath.adapters.WorkoutsAdapter" />
+        <variable name="workoutsAdapter" type="com.example.fitpath.ui.adapters.WorkoutsAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/PrimaryOne"
-        tools:context=".WorkoutsFragment">
+        tools:context=".ui.view.WorkoutsFragment">
 
         <TextView
             android:id="@+id/textViewWorkoutFragmentTitle"

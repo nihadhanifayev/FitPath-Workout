@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="workout" type="com.example.fitpath.classes.Workout" />
-        <variable name="adapter" type="com.example.fitpath.adapters.ChildRecyclerViewAdapter" />
+        <variable name="workout" type="com.example.fitpath.data.model.Workout" />
+        <variable name="adapter" type="com.example.fitpath.ui.adapters.ChildRecyclerViewAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/PrimaryThree"
-        tools:context=".WorkoutDetailFragment">
+        tools:context=".ui.view.WorkoutDetailFragment">
 
         <ImageView
             android:id="@+id/imageViewWorkoutDetail"

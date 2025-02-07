@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="caloriecalculatorfragmentobject" type="com.example.fitpath.CalorieCalculatorFragment" />
+        <variable name="caloriecalculatorfragmentobject" type="com.example.fitpath.ui.view.CalorieCalculatorFragment" />
         <variable name="BMI" type="Integer" />
         <variable name="BMIResult" type="String" />
         <variable name="DailyCalorie" type="String" />
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/PrimaryOne"
-        tools:context=".CalorieCalculatorFragment">
+        tools:context=".ui.view.CalorieCalculatorFragment">
 
         <TextView
             android:id="@+id/textViewCaloriCalcİnfo"

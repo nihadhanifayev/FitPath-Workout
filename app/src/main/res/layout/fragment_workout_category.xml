@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="adapter" type="com.example.fitpath.adapters.WorkoutCategoryAdapter" />
-        <variable name="workoutCategoryObject" type="com.example.fitpath.WorkoutCategoryFragment" />
+        <variable name="adapter" type="com.example.fitpath.ui.adapters.WorkoutCategoryAdapter" />
+        <variable name="workoutCategoryObject" type="com.example.fitpath.ui.view.WorkoutCategoryFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/PrimaryOne"
-        tools:context=".WorkoutCategoryFragment">
+        tools:context=".ui.view.WorkoutCategoryFragment">
 
         <TextView
             android:id="@+id/textViewWorkoutCategoryTitle"

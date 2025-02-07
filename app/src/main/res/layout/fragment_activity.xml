@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="activitytrainingobject" type="com.example.fitpath.ActivityFragment" />
-        <variable name="adapter" type="com.example.fitpath.adapters.ExerciseAdapter" />
-        <variable name="adapterSet" type="com.example.fitpath.adapters.SetAdapter" />
+        <variable name="activitytrainingobject" type="com.example.fitpath.ui.view.ActivityFragment" />
+        <variable name="adapter" type="com.example.fitpath.ui.adapters.ExerciseAdapter" />
+        <variable name="adapterSet" type="com.example.fitpath.ui.adapters.SetAdapter" />
         <variable name="set" type="String" />
     </data>
 

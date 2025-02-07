@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="program" type="com.example.fitpath.classes.Program" />
-        <variable name="programDetailObject" type="com.example.fitpath.ProgramDetailFragment" />
+        <variable name="program" type="com.example.fitpath.data.model.Program" />
+        <variable name="programDetailObject" type="com.example.fitpath.ui.view.ProgramDetailFragment" />
         <variable name="spinneradapter" type="android.widget.ArrayAdapter" />
         <variable name="view" type="android.view.View" />
         <variable name="dayNumber1" type="String" />
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/PrimaryOne"
-        tools:context=".ProgramDetailFragment">
+        tools:context=".ui.view.ProgramDetailFragment">
 
         <TextView
             android:id="@+id/textView"

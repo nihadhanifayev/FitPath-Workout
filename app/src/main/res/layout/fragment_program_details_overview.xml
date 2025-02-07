@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="program" type="com.example.fitpath.classes.Program" />
+        <variable name="program" type="com.example.fitpath.data.model.Program" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/PrimaryOne"
-        tools:context=".ProgramDetailsOverviewFragment">
+        tools:context=".ui.view.ProgramDetailsOverviewFragment">
 
         <TextView
             android:id="@+id/textViewProgramTitleOverview"
