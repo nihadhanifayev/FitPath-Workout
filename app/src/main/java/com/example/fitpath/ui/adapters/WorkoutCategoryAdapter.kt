@@ -10,10 +10,10 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitpath.R
-import com.example.fitpath.WorkoutCategoryFragmentDirections
 import com.example.fitpath.data.model.Workout
 import com.example.fitpath.data.model.WorkoutCategory
 import com.example.fitpath.data.dao.WorkoutDao
+import com.example.fitpath.ui.view.WorkoutCategoryFragmentDirections
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

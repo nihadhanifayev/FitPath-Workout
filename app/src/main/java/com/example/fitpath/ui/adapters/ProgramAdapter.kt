@@ -13,8 +13,8 @@ import androidx.cardview.widget.CardView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitpath.R
-import com.example.fitpath.WeeklyProgramFragmentDirections
 import com.example.fitpath.data.model.Program
+import com.example.fitpath.ui.view.WeeklyProgramFragmentDirections
 import com.example.fitpath.ui.viewmodels.WeeklyProgramFragmentViewModel
 
 class ProgramAdapter(private val mContext:Context, private var Programs:List<Program>, private var viewmodel: WeeklyProgramFragmentViewModel):

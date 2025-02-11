@@ -8,9 +8,9 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fitpath.DailyExerciseFragmentDirections
 import com.example.fitpath.R
 import com.example.fitpath.data.model.DailyExercise
+import com.example.fitpath.ui.view.DailyExerciseFragmentDirections
 
 class DailyExerciseAdapter(private val mContext:Context,private var ExerciseList:ArrayList<DailyExercise>):RecyclerView.Adapter<DailyExerciseAdapter.CardDesignObjectsDailyExercise>() {
 

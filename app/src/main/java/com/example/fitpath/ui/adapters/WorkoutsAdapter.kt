@@ -10,8 +10,8 @@ import androidx.cardview.widget.CardView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitpath.R
-import com.example.fitpath.WorkoutsFragmentDirections
 import com.example.fitpath.data.model.Workout
+import com.example.fitpath.ui.view.WorkoutsFragmentDirections
 
 class WorkoutsAdapter(private var mContext:Context,private var Workouts:List<Workout>):
     RecyclerView.Adapter<WorkoutsAdapter.CardDesignObjectsWorkout>() {
