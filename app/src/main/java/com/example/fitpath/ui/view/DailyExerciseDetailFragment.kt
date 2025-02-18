@@ -23,11 +23,10 @@ class DailyExerciseDetailFragment : Fragment() {
     private lateinit var design:FragmentDailyExerciseDetailBinding
     private lateinit var adapter: ExerciseAdapter
     private lateinit var Exercises:ArrayList<Exercise>
-    private lateinit var viewmodel: DailyExerciseDetailFragmentViewModel
+    private val viewmodel: DailyExerciseDetailFragmentViewModel by viewModels()
     private lateinit var exercise: DailyExercise
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        design = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_daily_exercise_detail,container,false)
+        design = DataBindingUtil.inflate(inflater, R.layout.fragment_daily_exercise_detail,container,false)
         design.dailyexercisedetailfragmentobject = this
         val bundle:DailyExerciseDetailFragmentArgs by navArgs()
         exercise = bundle.exercise
@@ -40,14 +39,7 @@ class DailyExerciseDetailFragment : Fragment() {
             design.DetailExerciseRv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
             design.adapter = adapter
         })
-
-
         return design.root
-    }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val tempViewModel : DailyExerciseDetailFragmentViewModel by viewModels()
-        this.viewmodel = tempViewModel
     }
     fun deleteButton(){
         viewmodel.deleteDailyExercise(exercise)

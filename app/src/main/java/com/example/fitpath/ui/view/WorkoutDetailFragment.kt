@@ -21,37 +21,30 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class WorkoutDetailFragment : Fragment() {
     private lateinit var design:FragmentWorkoutDetailBinding
-    private lateinit var viewmodel: WorkoutDetailFragmentViewModel
+    private val viewmodel: WorkoutDetailFragmentViewModel by viewModels()
     private lateinit var adapter: ChildRecyclerViewAdapter
-    private lateinit var ListWorkoutItem:ArrayList<ChildItem>
-    private lateinit var ListWorkout:ArrayList<Workout>
+    private lateinit var listWorkoutItem:ArrayList<ChildItem>
+    private lateinit var listWorkout:ArrayList<Workout>
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         design = DataBindingUtil.inflate(inflater, R.layout.fragment_workout_detail,container,false)
         val bundle:WorkoutDetailFragmentArgs by navArgs()
         val workout = bundle.workout
         design.workout = workout
-        ListWorkoutItem = ArrayList<ChildItem>()
+        listWorkoutItem = ArrayList<ChildItem>()
         design.imageViewWorkoutDetail.setImageResource((activity as AppCompatActivity).
         resources.getIdentifier(workout.workoutImage,"drawable",(activity as AppCompatActivity).packageName))
         design.rvAlternatives.setHasFixedSize(true)
         design.rvAlternatives.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
         viewmodel.workoutLiveData.observe(viewLifecycleOwner){listWorkout->
-            ListWorkout = listWorkout as ArrayList<Workout>
-            for (childItem in ListWorkout){
+            this.listWorkout = listWorkout as ArrayList<Workout>
+            for (childItem in this.listWorkout){
                 val item = ChildItem(childItem.workout,childItem.workoutImage)
-                ListWorkoutItem.add(item)
-                adapter = ChildRecyclerViewAdapter(requireContext(),ListWorkoutItem)
+                listWorkoutItem.add(item)
+                adapter = ChildRecyclerViewAdapter(requireContext(),listWorkoutItem)
                 design.adapter = adapter
             }
         }
         viewmodel.getCategories(workout.workoutCategory)
         return design.root
     }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val tempViewModel: WorkoutDetailFragmentViewModel by viewModels()
-        this.viewmodel = tempViewModel
-    }
-
 }

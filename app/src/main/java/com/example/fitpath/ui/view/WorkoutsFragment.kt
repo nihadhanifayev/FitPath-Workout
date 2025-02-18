@@ -20,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class WorkoutsFragment : Fragment() {
     private lateinit var design:FragmentWorkoutsBinding
-    private lateinit var viewmodel: WorkoutsFragmentViewModel
+    private val viewmodel: WorkoutsFragmentViewModel by viewModels()
     private lateinit var adapter: WorkoutsAdapter
     private lateinit var workouts:ArrayList<Workout>
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -38,12 +38,4 @@ class WorkoutsFragment : Fragment() {
 
         return design.root
     }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val tempViewModel: WorkoutsFragmentViewModel by viewModels()
-        this.viewmodel = tempViewModel
-    }
-
-
 }

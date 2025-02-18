@@ -20,16 +20,16 @@ import kotlin.collections.ArrayList
 class WeeklyProgramFragment : Fragment() {
     private lateinit var design:FragmentWeeklyProgramBinding
     private lateinit var adapter: ProgramAdapter
-    private lateinit var Program_List:ArrayList<Program>
-    private lateinit var viewmodel: WeeklyProgramFragmentViewModel
+    private lateinit var programList:ArrayList<Program>
+    private val viewmodel: WeeklyProgramFragmentViewModel by viewModels()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         design = DataBindingUtil.inflate(inflater, R.layout.fragment_weekly_program,container,false)
         design.weeklyprogramfragmentobject = this
 
         viewmodel.livedata.observe(viewLifecycleOwner) { list ->
-            Program_List = ArrayList<Program>()
-            Program_List = list as ArrayList<Program>
-            adapter = ProgramAdapter(requireContext(), Program_List, viewmodel)
+            programList = ArrayList<Program>()
+            programList = list as ArrayList<Program>
+            adapter = ProgramAdapter(requireContext(), programList, viewmodel)
             design.ProgramsRV.setHasFixedSize(true)
             design.adapter = adapter
         }
@@ -40,10 +40,4 @@ class WeeklyProgramFragment : Fragment() {
         val transition = WeeklyProgramFragmentDirections.weeklyProgramFAddProgramF()
         Navigation.findNavController(design.addProgramFab).navigate(transition)
     }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val tempViewModel: WeeklyProgramFragmentViewModel by viewModels()
-        this.viewmodel = tempViewModel
-    }
-
 }

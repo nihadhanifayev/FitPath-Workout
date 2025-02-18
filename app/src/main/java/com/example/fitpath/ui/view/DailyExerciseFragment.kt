@@ -17,25 +17,18 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class DailyExerciseFragment : Fragment() {
     private lateinit var design:FragmentDailyExerciseBinding
-    private lateinit var DailyExercises:ArrayList<DailyExercise>
+    private lateinit var dailyExercises:ArrayList<DailyExercise>
     private lateinit var adapter: DailyExerciseAdapter
-    private lateinit var viewmodel: DailyExerciseFragmentViewModel
+    private val viewmodel: DailyExerciseFragmentViewModel by viewModels()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         design = DataBindingUtil.inflate(inflater, R.layout.fragment_daily_exercise,container,false)
         viewmodel.livedata.observe(viewLifecycleOwner,{list->
-            DailyExercises = list as ArrayList<DailyExercise>
-            adapter = DailyExerciseAdapter(requireContext(),DailyExercises)
+            dailyExercises = list as ArrayList<DailyExercise>
+            adapter = DailyExerciseAdapter(requireContext(),dailyExercises)
             design.DailyExerciseRv.setHasFixedSize(true)
             design.adapter = adapter
         })
         viewmodel.getDailyExercises()
         return design.root
     }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val tempViewModel: DailyExerciseFragmentViewModel by viewModels()
-        this.viewmodel = tempViewModel
-    }
-
 }
