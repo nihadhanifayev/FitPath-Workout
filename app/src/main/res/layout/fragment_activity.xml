@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@{minute &lt; 10 ? 0+minute.toString : minute.toString()}"
+            android:text="@{minute &lt; 10 ? 0+minute.toString() : minute.toString()}"
             android:textColor="@color/white"
             android:textSize="34sp"
             android:textStyle="bold"

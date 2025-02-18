@@ -6,19 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitpath.R
 import com.example.fitpath.data.model.Workout
 import com.example.fitpath.data.model.WorkoutCategory
-import com.example.fitpath.data.dao.WorkoutDao
 import com.example.fitpath.ui.view.WorkoutCategoryFragmentDirections
+import com.example.fitpath.ui.viewmodels.WorkoutCategoryFragmentViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class WorkoutCategoryAdapter(private val mContext:Context, private var Categories:List<WorkoutCategory>, private var dao: WorkoutDao):
+class WorkoutCategoryAdapter(private val viewLifeCycleOwner:LifecycleOwner,private val mContext:Context, private var Categories:List<WorkoutCategory>, private var viewmodel: WorkoutCategoryFragmentViewModel):
     RecyclerView.Adapter<WorkoutCategoryAdapter.CardDesignObjectsCategory>() {
 
     inner class CardDesignObjectsCategory(design:View):RecyclerView.ViewHolder(design){
@@ -44,19 +45,19 @@ class WorkoutCategoryAdapter(private val mContext:Context, private var Categorie
     }
 
     override fun onBindViewHolder(holder: CardDesignObjectsCategory, position: Int) {
-        val categori = Categories.get(position)
-        var selectedcategories = ArrayList<Workout>()
-
+        val category = Categories.get(position)
+        var selectedCategories = ArrayList<Workout>()
         val job = CoroutineScope(Dispatchers.Main).launch {
-            selectedcategories = dao.getWorkouts(categori.category) as ArrayList<Workout>
-            var adapter = WorkoutSmallPictureAdapter(mContext,selectedcategories)
+            selectedCategories = viewmodel.getWorkouts(category.category)
+            val adapter = WorkoutSmallPictureAdapter(mContext, selectedCategories)
             holder.rv.setHasFixedSize(true)
-            holder.rv.layoutManager = LinearLayoutManager(mContext,LinearLayoutManager.HORIZONTAL,false)
+            holder.rv.layoutManager =
+                LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
             holder.rv.adapter = adapter
         }
-        holder.category_name.text = categori.category
+        holder.category_name.text = category.category
         holder.cardViewCategory.setOnClickListener {
-            val send_category = WorkoutCategoryFragmentDirections.workoutCategoryFragmentWorkoutsFragment(categori.category)
+            val send_category = WorkoutCategoryFragmentDirections.workoutCategoryFragmentWorkoutsFragment(category.category)
             Navigation.findNavController(it).navigate(send_category)
         }
 
