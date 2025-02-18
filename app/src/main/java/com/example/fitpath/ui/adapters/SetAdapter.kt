@@ -41,10 +41,10 @@ class SetAdapter(private var mContext:Context,private var SetList:List<Set>):Rec
         holder.setDetail.setOnClickListener {
             val alertD = AlertDialog.Builder(mContext)
             alertD.setMessage("${set.set_rep} X ${set.set_weight}")
-            alertD.setTitle("SET ${set.set_no}")
+            alertD.setTitle("SET ${set.set_no.toInt()-1}")
             alertD.show()
         }
-        holder.SetText.text = "SET ${set.set_no}"
+        holder.SetText.text = "SET ${set.set_no.toInt()-1}"
     }
 
 
