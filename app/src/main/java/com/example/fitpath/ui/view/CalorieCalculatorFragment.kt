@@ -8,76 +8,55 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.fitpath.R
+import com.example.fitpath.data.model.Activity
+import com.example.fitpath.data.model.Gender
 import com.example.fitpath.databinding.FragmentCaloriCalculatorBinding
 import com.example.fitpath.ui.viewmodels.CalorieCalculatorFragmentViewModel
 
 
 class CalorieCalculatorFragment : Fragment() {
     private lateinit var design:FragmentCaloriCalculatorBinding
-    private lateinit var viewmodel: CalorieCalculatorFragmentViewModel
-    private var manRadioButtonStatus = false
-    private var womanRadioButtonStatus = false
-    private var activityOne = false
-    private var activityTwo = false
-    private var activityThree = false
-    private var activityFour = false
+    private val viewmodel: CalorieCalculatorFragmentViewModel by viewModels()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         design = DataBindingUtil.inflate(inflater,
             R.layout.fragment_calori_calculator,container,false)
         design.caloriecalculatorfragmentobject = this
+        observeLiveData()
 
-        viewmodel.BMIResultLiveData.observe(viewLifecycleOwner) { bmiresult ->
-            design.bmiResult = bmiresult
-        }
-        viewmodel.DailyCalorieLiveData.observe(viewLifecycleOwner) { dailycalorie ->
-            design.dailyCalorie = dailycalorie
-        }
-        viewmodel.BMI.observe(viewLifecycleOwner) { bmi ->
-            design.bmi = bmi
-        }
         return design.root
     }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val tempViewModel: CalorieCalculatorFragmentViewModel by viewModels()
-        this.viewmodel = tempViewModel
-    }
     fun calculateButton(age:String,height:String,weight:String){
-        manRadioButtonStatus = design.radioButtonMan.isChecked
-        womanRadioButtonStatus = design.radioButtonWoman.isChecked
-        activityOne = design.radioButtonActivityOne.isChecked
-        activityTwo = design.radioButtonActivityTwo.isChecked
-        activityThree = design.radioButtonActivityThree.isChecked
-        activityFour = design.radioButtonActivityFour.isChecked
-        if (manRadioButtonStatus){
-            if (activityOne){
-                viewmodel.calorieCalculate(age,height,weight,"man","one")
-            }
-            if (activityTwo){
-                viewmodel.calorieCalculate(age,height,weight,"man","two")
-            }
-            if (activityThree){
-                viewmodel.calorieCalculate(age,height,weight,"man","three")
-            }
-            if (activityFour){
-                viewmodel.calorieCalculate(age,height,weight,"man","four")
-            }
+        radioButtonCheckGender()
+        radioButtonCheckActivity()
+        viewmodel.calorieCalculateClickCalculateButton(age,height,weight)
+    }
+    private fun observeLiveData(){
+        viewmodel.bmiResultLiveData.observe(viewLifecycleOwner) { bmiResult ->
+            design.bmiResult = bmiResult
         }
-        if (womanRadioButtonStatus){
-            if (activityOne){
-                viewmodel.calorieCalculate(age,height,weight,"woman","one")
-            }
-            if (activityTwo){
-                viewmodel.calorieCalculate(age,height,weight,"woman","two")
-            }
-            if (activityThree){
-                viewmodel.calorieCalculate(age,height,weight,"woman","three")
-            }
-            if (activityFour){
-                viewmodel.calorieCalculate(age,height,weight,"woman","four")
-            }
+        viewmodel.dailyCalorieLiveData.observe(viewLifecycleOwner) { dailyCalorie ->
+            design.dailyCalorie = dailyCalorie
+        }
+        viewmodel.bmi.observe(viewLifecycleOwner) { bmi ->
+            design.bmi = bmi
         }
     }
-
-
+    private fun radioButtonCheckGender(){
+        return if (design.radioButtonMan.isChecked){
+            viewmodel.selectedGender = Gender.MAN
+        }else{
+            viewmodel.selectedGender = Gender.WOMAN
+        }
+    }
+    private fun radioButtonCheckActivity(){
+        return if (design.radioButtonActivityOne.isChecked){
+            viewmodel.selectedActivity = Activity.ONE
+        }else if(design.radioButtonActivityTwo.isChecked){
+            viewmodel.selectedActivity = Activity.TWO
+        } else  if (design.radioButtonActivityThree.isChecked){
+            viewmodel.selectedActivity = Activity.THREE
+        } else {
+            viewmodel.selectedActivity = Activity.FOUR
+        }
+    }
 }

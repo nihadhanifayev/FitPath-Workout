@@ -2,80 +2,74 @@ package com.example.fitpath.ui.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.fitpath.data.model.Activity
+import com.example.fitpath.data.model.Gender
 
 class CalorieCalculatorFragmentViewModel:ViewModel() {
-    var BMIResultLiveData = MutableLiveData<String>()
-    var DailyCalorieLiveData = MutableLiveData<String>()
-    var BMI = MutableLiveData<Int>()
+    var bmiResultLiveData = MutableLiveData<String>()
+    var dailyCalorieLiveData = MutableLiveData<String>()
+    var bmi = MutableLiveData<Int>()
 
     init {
-        BMIResultLiveData = MutableLiveData<String>()
-        DailyCalorieLiveData = MutableLiveData<String>()
-        BMI = MutableLiveData<Int>()
+        bmiResultLiveData = MutableLiveData<String>()
+        dailyCalorieLiveData = MutableLiveData<String>()
+        bmi = MutableLiveData<Int>()
     }
-    fun calorieCalculate(age:String,height:String,weight:String,gender:String,activity:String){
+    var bmiResult = 0
+    var splitHeight = ""
+    var selectedGender: Gender? = null
+    var selectedActivity: Activity? = null
 
-        val splitheightArray = height.split(".")
-        val splitheight = splitheightArray[0]+splitheightArray[1]
+    fun calorieCalculateClickCalculateButton(age:String,height:String,weight:String){
+        val gender = selectedGender ?: return
+        val activity = selectedActivity ?: return
+        val splitHeightArray = height.split(".")
+        splitHeight = splitHeightArray[0]+splitHeightArray[1]
+        calculateBmi(height,weight)
+        val bmr = calculateBmr(age.toInt(),weight.toDouble(),gender)
+        dailyCalorieLiveData.value = calculateDailyCalorie(bmr,activity).toString()
+        calculateBmiResult()
+    }
 
-        val BMIResult = (weight.toDouble()/(height.toDouble()*height.toDouble())).toInt()
-        BMI.value = BMIResult
-
-        if (BMIResult.toDouble()<16){
-            BMIResultLiveData.value = "Severe thinness"
-        }else if (BMIResult.toDouble()<17){
-            BMIResultLiveData.value = "Moderate thinness"
-        }else if (BMIResult.toDouble()<18.4){
-            BMIResultLiveData.value = "Mild thinness"
-        }else if (BMIResult.toDouble()<24.9){
-            BMIResultLiveData.value = "Normal range"
-        }else if (BMIResult.toDouble()<29.9){
-            BMIResultLiveData.value = "Overweight (Pre-obese)"
-        }else if (BMIResult.toDouble()<34.9){
-            BMIResultLiveData.value = "Obese (Class I)"
-        }else if (BMIResult.toDouble()<39.9){
-            BMIResultLiveData.value = "Obese (Class II)"
-        }else if (BMIResult.toDouble()>=40){
-            BMIResultLiveData.value = "Obese (Class III)"
+    private fun calculateBmiResult(){
+        if (bmiResult.toDouble()<16){
+            bmiResultLiveData.value = "Severe thinness"
+        }else if (bmiResult.toDouble()<17){
+            bmiResultLiveData.value = "Moderate thinness"
+        }else if (bmiResult.toDouble()<18.4){
+            bmiResultLiveData.value = "Mild thinness"
+        }else if (bmiResult.toDouble()<24.9){
+            bmiResultLiveData.value = "Normal range"
+        }else if (bmiResult.toDouble()<29.9){
+            bmiResultLiveData.value = "Overweight (Pre-obese)"
+        }else if (bmiResult.toDouble()<34.9){
+            bmiResultLiveData.value = "Obese (Class I)"
+        }else if (bmiResult.toDouble()<39.9){
+            bmiResultLiveData.value = "Obese (Class II)"
+        }else if (bmiResult.toDouble()>=40){
+            bmiResultLiveData.value = "Obese (Class III)"
         }
-        val manBMR  = 66.5+(13.75*weight.toDouble()) + (5*splitheight.toInt()) - (6.77*age.toDouble())
-        val womanBMR  = 655.1+(9.56*weight.toDouble()) + (1.85*splitheight.toInt()) - (4.67*age.toDouble())
+    }
+    private fun calculateBmi(height:String, weight:String):Int{
+        bmiResult = (weight.toDouble()/(height.toDouble()*height.toDouble())).toInt()
+        bmi.value = bmiResult
+        return bmiResult
 
-        if (gender=="man"){
-            if (activity == "one"){
-                val calorie = manBMR*1.2
-                DailyCalorieLiveData.value = calorie.toString()
-            }
-            if (activity == "two"){
-                val calorie = manBMR*1.3
-                DailyCalorieLiveData.value = calorie.toString()
-            }
-            if (activity == "three"){
-                val calorie = manBMR*1.4
-                DailyCalorieLiveData.value = calorie.toString()
-            }
-            if (activity == "four"){
-                val calorie = manBMR*1.5
-                DailyCalorieLiveData.value = calorie.toString()
-            }
+    }
+    private fun calculateBmr(age: Int, weight:Double, gender: Gender):Double{
+        return if(gender == Gender.MAN){
+            66.5+(13.75*weight) + (5*splitHeight.toInt()) - (6.77*age.toDouble())
+        }else{
+            655.1+(9.56*weight) + (1.85*splitHeight.toInt()) - (4.67*age.toDouble())
         }
-        if (gender == "woman"){
-            if (activity == "one"){
-                val calorie = womanBMR*1.2
-                DailyCalorieLiveData.value = calorie.toString()
-            }
-            if (activity == "two"){
-                val calorie = womanBMR*1.3
-                DailyCalorieLiveData.value = calorie.toString()
-            }
-            if (activity == "three"){
-                val calorie = womanBMR*1.4
-                DailyCalorieLiveData.value = calorie.toString()
-            }
-            if (activity == "four"){
-                val calorie = womanBMR*1.5
-                DailyCalorieLiveData.value = calorie.toString()
-            }
+    }
+    private fun calculateDailyCalorie(bmr: Double, activityLevel: Activity): Double {
+        val multiplier = when (activityLevel) {
+            Activity.ONE -> 1.2
+            Activity.TWO -> 1.3
+            Activity.THREE -> 1.4
+            Activity.FOUR -> 1.5
         }
+        return bmr * multiplier
     }
 }
