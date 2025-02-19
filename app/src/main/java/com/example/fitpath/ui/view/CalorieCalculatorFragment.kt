@@ -1,5 +1,7 @@
 package com.example.fitpath.ui.view
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,13 +24,14 @@ class CalorieCalculatorFragment : Fragment() {
             R.layout.fragment_calori_calculator,container,false)
         design.caloriecalculatorfragmentobject = this
         observeLiveData()
-
+        design.cardViewResult.visibility = View.GONE
         return design.root
     }
     fun calculateButton(age:String,height:String,weight:String){
         radioButtonCheckGender()
         radioButtonCheckActivity()
         viewmodel.calorieCalculateClickCalculateButton(age,height,weight)
+        animation()
     }
     private fun observeLiveData(){
         viewmodel.bmiResultLiveData.observe(viewLifecycleOwner) { bmiResult ->
@@ -58,5 +61,19 @@ class CalorieCalculatorFragment : Fragment() {
         } else {
             viewmodel.selectedActivity = Activity.FOUR
         }
+    }
+    private fun animation(){
+
+        design.cardViewResult.visibility = View.VISIBLE
+
+        val scaleX = ObjectAnimator.ofFloat(design.cardViewResult, View.SCALE_X, 1f, 1.5f, 1f)
+        val scaleY = ObjectAnimator.ofFloat(design.cardViewResult, View.SCALE_Y, 1f, 1.5f, 1f)
+        val rotate = ObjectAnimator.ofFloat(design.cardViewResult, View.ROTATION, 0f, 720f)
+        val fade = ObjectAnimator.ofFloat(design.cardViewResult, View.ALPHA, 0f, 0.5f, 1f)
+        val animatorSet = AnimatorSet().apply {
+            playTogether(scaleX, scaleY, rotate,fade)
+            duration = 1500
+        }
+        animatorSet.start()
     }
 }
