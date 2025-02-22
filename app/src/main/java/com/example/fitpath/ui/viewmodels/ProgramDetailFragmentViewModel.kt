@@ -9,9 +9,6 @@ import com.example.fitpath.data.dao.ProgramDao
 import com.example.fitpath.data.dao.ProgramWorkoutsDao
 import com.example.fitpath.data.dao.WorkoutDao
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -63,7 +60,6 @@ class ProgramDetailFragmentViewModel @Inject constructor (var dao: ProgramDao, p
             if (workout.programWorkoutDay==5){selectedWorkoutManager[4].add(workout.workoutName)}
             if (workout.programWorkoutDay==6){selectedWorkoutManager[5].add(workout.workoutName)}
             if (workout.programWorkoutDay==7){selectedWorkoutManager[6].add(workout.workoutName)}
-
         }
     }
     fun createProgram(programTitle:String, dayOne:String, dayTwo:String, dayThree:String, dayFour:String, dayFife:String, daySix:String, daySeven:String,){

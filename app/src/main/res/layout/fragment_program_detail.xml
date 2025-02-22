@@ -193,7 +193,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Program Title"
-                android:text="@{program.program_name}"
+                android:text="@{program.programName}"
                 android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
 

@@ -27,6 +27,15 @@ class CalorieCalculatorFragment : Fragment() {
         design.cardViewResult.visibility = View.GONE
         return design.root
     }
+
+    override fun onResume() {
+        super.onResume()
+        design.textWeight.text?.clear()
+        design.textHeight.text?.clear()
+        design.textAge.text?.clear()
+        design.radioGroupGender.clearCheck()
+        design.radioGroupActivity.clearCheck()
+    }
     fun calculateButton(age:String,height:String,weight:String){
         radioButtonCheckGender()
         radioButtonCheckActivity()
