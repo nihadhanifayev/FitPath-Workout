@@ -44,9 +44,9 @@ class ProgramAdapter(private val mContext:Context, private var Programs:List<Pro
     }
 
     override fun onBindViewHolder(holder: CardDesignObjectsPrograms, position: Int) {
-        val program = Programs.get(position)
+        val program = Programs[position]
         holder.progressBar.visibility = View.INVISIBLE
-        holder.program_name.text = program.program_name
+        holder.program_name.text = program.programName
         holder.cardView.setOnClickListener {
             val transition = WeeklyProgramFragmentDirections.weeklyProgramFProgramOverview(program)
             Navigation.findNavController(it).navigate(transition)
@@ -55,20 +55,24 @@ class ProgramAdapter(private val mContext:Context, private var Programs:List<Pro
             val transition1 = WeeklyProgramFragmentDirections.weeklyProgramFAddProgramF(program)
             val popupmenu = PopupMenu(mContext,holder.more_image)
             popupmenu.menuInflater.inflate(R.menu.program_card_menu,popupmenu.menu)
-            popupmenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
-                when(item.itemId){
+            popupmenu.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
                     R.id.action_program_change -> {
                         holder.progressBar.visibility = View.VISIBLE
-                        Handler().postDelayed({Navigation.findNavController(it).navigate(transition1)},3000)
+                        Handler().postDelayed({
+                            Navigation.findNavController(it).navigate(transition1)
+                        }, 3000)
                         true
                     }
                     R.id.action_program_delete -> {
                         viewmodel.deleteProgram(program)
                         true
                     }
-                    else -> {false}
+                    else -> {
+                        false
+                    }
                 }
-            })
+            }
             popupmenu.show()
         }
     }

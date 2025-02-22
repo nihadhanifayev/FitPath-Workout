@@ -29,8 +29,10 @@ class WorkoutDetailFragment : Fragment() {
         design = DataBindingUtil.inflate(inflater, R.layout.fragment_workout_detail,container,false)
         val bundle:WorkoutDetailFragmentArgs by navArgs()
         val workout = bundle.workout
+
         design.workout = workout
         listWorkoutItem = ArrayList<ChildItem>()
+
         design.imageViewWorkoutDetail.setImageResource((activity as AppCompatActivity).
         resources.getIdentifier(workout.workoutImage,"drawable",(activity as AppCompatActivity).packageName))
         design.rvAlternatives.setHasFixedSize(true)

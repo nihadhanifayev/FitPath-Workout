@@ -2,6 +2,7 @@ package com.example.fitpath.ui.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.fitpath.data.model.DailyExercise
 import com.example.fitpath.data.model.Exercise
 import com.example.fitpath.data.dao.DailyExerciseDao
@@ -20,12 +21,12 @@ class DailyExerciseDetailFragmentViewModel @Inject constructor (var dao: DailyEx
         livedata = MutableLiveData<List<Exercise>>()
     }
     fun getExercise(id:Int){
-        val job = CoroutineScope(Dispatchers.Main).launch {
+        viewModelScope.launch {
             livedata.value = daoExercise.getExercises(id)
         }
     }
     fun deleteDailyExercise(exercise: DailyExercise){
-        val job = CoroutineScope(Dispatchers.Main).launch {
+        viewModelScope.launch {
             dao.deleteDailyExercise(exercise)
         }
     }

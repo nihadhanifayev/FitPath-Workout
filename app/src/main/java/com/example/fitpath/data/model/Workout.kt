@@ -9,10 +9,10 @@ import java.io.Serializable
 @Entity(tableName = "workout")
 data class Workout(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo("workout_id") @NotNull var workout_id:Int,
-    @ColumnInfo("workout_category") @NotNull var workoutCategory:String,
-    @ColumnInfo("workout_name") @NotNull var workout:String,
-    @ColumnInfo("workout_info") @NotNull var workoutInfo:String,
-    @ColumnInfo("workout_image") @NotNull var workoutImage:String):Serializable {
+    @ColumnInfo("workout_id") var workoutId:Int,
+    @ColumnInfo("workout_category") var workoutCategory:String,
+    @ColumnInfo("workout_name") var workout:String,
+    @ColumnInfo("workout_info") var workoutInfo:String,
+    @ColumnInfo("workout_image") var workoutImage:String):Serializable {
 
 }

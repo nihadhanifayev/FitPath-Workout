@@ -2,6 +2,7 @@ package com.example.fitpath.ui.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.fitpath.data.model.DailyExercise
 import com.example.fitpath.data.dao.DailyExerciseDao
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +19,7 @@ class DailyExerciseFragmentViewModel @Inject constructor (var dao: DailyExercise
         livedata = MutableLiveData<List<DailyExercise>>()
     }
     fun getDailyExercises(){
-        val job = CoroutineScope(Dispatchers.Main).launch {
+        viewModelScope.launch {
             livedata.value = dao.getDailyExercises()
         }
     }

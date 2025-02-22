@@ -25,19 +25,24 @@ class WeeklyProgramFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         design = DataBindingUtil.inflate(inflater, R.layout.fragment_weekly_program,container,false)
         design.weeklyprogramfragmentobject = this
-
-        viewmodel.livedata.observe(viewLifecycleOwner) { list ->
-            programList = ArrayList<Program>()
-            programList = list as ArrayList<Program>
-            adapter = ProgramAdapter(requireContext(), programList, viewmodel)
-            design.ProgramsRV.setHasFixedSize(true)
-            design.adapter = adapter
-        }
-        viewmodel.getPrograms()
+        observeProgramList()
         return design.root
     }
     fun fabClick(){
         val transition = WeeklyProgramFragmentDirections.weeklyProgramFAddProgramF()
         Navigation.findNavController(design.addProgramFab).navigate(transition)
+    }
+    private fun observeProgramList(){
+        viewmodel.livedata.observe(viewLifecycleOwner) { list ->
+            programList = ArrayList<Program>()
+            programList = list as ArrayList<Program>
+            initAdapter(programList)
+        }
+        viewmodel.getPrograms()
+    }
+    private fun initAdapter(list:ArrayList<Program>){
+        adapter = ProgramAdapter(requireContext(), list, viewmodel)
+        design.ProgramsRV.setHasFixedSize(true)
+        design.adapter = adapter
     }
 }

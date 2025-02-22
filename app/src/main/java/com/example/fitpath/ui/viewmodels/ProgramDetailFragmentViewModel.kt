@@ -54,14 +54,15 @@ class ProgramDetailFragmentViewModel @Inject constructor (var dao: ProgramDao, p
         }
     }
     fun observeAndAddSelectedWorkouts(workoutList:List<ProgramWorkouts>){
+        workoutManagerClear()
         for (workout in workoutList){
-            if (workout.program_workout_day==1){selectedWorkoutManager[0].add(workout.workout_name)}
-            if (workout.program_workout_day==2){selectedWorkoutManager[1].add(workout.workout_name)}
-            if (workout.program_workout_day==3){selectedWorkoutManager[2].add(workout.workout_name)}
-            if (workout.program_workout_day==4){selectedWorkoutManager[3].add(workout.workout_name)}
-            if (workout.program_workout_day==5){selectedWorkoutManager[4].add(workout.workout_name)}
-            if (workout.program_workout_day==6){selectedWorkoutManager[5].add(workout.workout_name)}
-            if (workout.program_workout_day==7){selectedWorkoutManager[6].add(workout.workout_name)}
+            if (workout.programWorkoutDay==1){selectedWorkoutManager[0].add(workout.workoutName)}
+            if (workout.programWorkoutDay==2){selectedWorkoutManager[1].add(workout.workoutName)}
+            if (workout.programWorkoutDay==3){selectedWorkoutManager[2].add(workout.workoutName)}
+            if (workout.programWorkoutDay==4){selectedWorkoutManager[3].add(workout.workoutName)}
+            if (workout.programWorkoutDay==5){selectedWorkoutManager[4].add(workout.workoutName)}
+            if (workout.programWorkoutDay==6){selectedWorkoutManager[5].add(workout.workoutName)}
+            if (workout.programWorkoutDay==7){selectedWorkoutManager[6].add(workout.workoutName)}
 
         }
     }
@@ -115,8 +116,11 @@ class ProgramDetailFragmentViewModel @Inject constructor (var dao: ProgramDao, p
             dao.updateProgram(program)
         }
     }
-    suspend fun getProgramWorkoutWithID(id:Int){
-        workoutLists = daoProgramWorkouts.getProgramIDWorkoutsWithPW(id) as ArrayList<ProgramWorkouts>
+    fun getProgramWorkoutWithID(id:Int){
+        viewModelScope.launch{
+            workoutLists = daoProgramWorkouts.getProgramIDWorkoutsWithPW(id) as ArrayList<ProgramWorkouts>
+            livedataLastProgramWorkouts.postValue(workoutLists)
+        }
     }
 
 }

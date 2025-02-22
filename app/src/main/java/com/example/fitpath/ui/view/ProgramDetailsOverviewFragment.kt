@@ -45,7 +45,7 @@ class ProgramDetailsOverviewFragment : Fragment() {
     private fun getProgramWorkoutsAndCreateChildItem(program: Program){
         for (x in 1..7){
             lifecycleScope.launch {
-                viewmodel.getProgramWorkoutsWithId(program.program_id,x)
+                viewmodel.getProgramWorkoutsWithId(program.programId,x)
                 selectWorkoutImgAndCreateChildItem(viewmodel.list,x)
             }
         }
@@ -53,11 +53,11 @@ class ProgramDetailsOverviewFragment : Fragment() {
     private fun selectWorkoutImgAndCreateChildItem(list: List<ProgramWorkouts>, x: Int){
         for (item in 0..list.size-1){
             var workoutImg = ""
-            val splitList = list[item].workout_name.lowercase(Locale.ROOT).replace(" ","_")
+            val splitList = list[item].workoutName.lowercase(Locale.ROOT).replace(" ","_")
             for (y in splitList){
                 workoutImg+=y
             }
-            val childItem = ChildItem(list[item].workout_name,workoutImg)
+            val childItem = ChildItem(list[item].workoutName,workoutImg)
 
             viewmodel.childListManager[x-1].add(childItem)
         }

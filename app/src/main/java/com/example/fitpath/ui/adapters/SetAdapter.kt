@@ -1,5 +1,6 @@
 package com.example.fitpath.ui.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -36,15 +37,16 @@ class SetAdapter(private var mContext:Context,private var SetList:List<Set>):Rec
         return SetList.size
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: cardDesignObjectsSet, position: Int) {
         val set = SetList[position]
         holder.setDetail.setOnClickListener {
             val alertD = AlertDialog.Builder(mContext)
-            alertD.setMessage("${set.set_rep} X ${set.set_weight}")
-            alertD.setTitle("SET ${set.set_no.toInt()-1}")
+            alertD.setMessage("${set.setRep} X ${set.setWeight}")
+            alertD.setTitle("SET ${set.setNo.toInt()-1}")
             alertD.show()
         }
-        holder.SetText.text = "SET ${set.set_no.toInt()-1}"
+        holder.SetText.text = "SET ${set.setNo.toInt()-1}"
     }
 
 

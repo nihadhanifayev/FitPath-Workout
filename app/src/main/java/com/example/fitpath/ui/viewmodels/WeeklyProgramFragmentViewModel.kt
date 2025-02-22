@@ -2,6 +2,7 @@ package com.example.fitpath.ui.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.fitpath.data.model.Program
 import com.example.fitpath.data.dao.ProgramDao
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,12 +19,12 @@ class WeeklyProgramFragmentViewModel @Inject constructor (var dao: ProgramDao):V
     }
 
     fun getPrograms(){
-        val job = CoroutineScope(Dispatchers.Main).launch {
+        viewModelScope.launch {
             livedata.value = dao.getPrograms()
         }
     }
     fun deleteProgram(program: Program){
-        val job = CoroutineScope(Dispatchers.Main).launch {
+        viewModelScope.launch {
             dao.deleteProgram(program)
             getPrograms()
         }

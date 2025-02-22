@@ -9,8 +9,8 @@ import java.io.Serializable
 @Entity(tableName = "program_workouts")
 data class ProgramWorkouts(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo("program_workout_id") var program_workout_id:Int,
-    @ColumnInfo("program_id") var program_id:Int,
-    @ColumnInfo("workout_name") var workout_name:String,
-    @ColumnInfo("program_workout_day") var program_workout_day:Int): Serializable {
+    @ColumnInfo("program_workout_id") var programWorkoutId:Int,
+    @ColumnInfo("program_id") var programId:Int,
+    @ColumnInfo("workout_name") var workoutName:String,
+    @ColumnInfo("program_workout_day") var programWorkoutDay:Int): Serializable {
 }

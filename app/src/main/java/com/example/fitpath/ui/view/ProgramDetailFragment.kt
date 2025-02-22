@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.example.fitpath.R
@@ -21,7 +20,6 @@ import com.example.fitpath.data.model.ProgramWorkouts
 import com.example.fitpath.databinding.FragmentProgramDetailBinding
 import com.example.fitpath.ui.viewmodels.ProgramDetailFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -31,7 +29,6 @@ class ProgramDetailFragment : Fragment() {
     private val viewmodel: ProgramDetailFragmentViewModel by activityViewModels()
     private lateinit var arrayWorkouts:ArrayList<String>
     private lateinit var lastProgramId: Program
-
 
 
     @SuppressLint("SetTextI18n")
@@ -63,13 +60,13 @@ class ProgramDetailFragment : Fragment() {
         alertD2.show()
     }
     private fun update(programTitle:String, day1:String, day2:String, day3:String, day4:String, day5:String, day6:String, day7:String){
-        val updateProgram = Program(lastProgramId.program_id,programTitle,day1,day2,day3,day4,day5,day6,day7)
+        val updateProgram = Program(lastProgramId.programId,programTitle,day1,day2,day3,day4,day5,day6,day7)
         viewmodel.updateProgram(updateProgram)
     }
     private fun addProgramWorkouts(){
         for (selectedWorkout in viewmodel.selectedWorkoutManager){
             for (workout in selectedWorkout){
-                val programWorkouts = ProgramWorkouts(0, lastProgramId.program_id, workout, viewmodel.selectedWorkoutManager.indexOf(selectedWorkout)+1)
+                val programWorkouts = ProgramWorkouts(0, lastProgramId.programId, workout, viewmodel.selectedWorkoutManager.indexOf(selectedWorkout)+1)
                 viewmodel.addProgramWorkouts(programWorkouts)
             }
         }
@@ -110,17 +107,19 @@ class ProgramDetailFragment : Fragment() {
             viewmodel.workoutManagerClear()
             design.buttonCreateProgram.text = "CHANGE"
             design.program = program
-            lifecycleScope.launch {
-                viewmodel.getProgramWorkoutWithID(program.program_id)
-                viewmodel.observeAndAddSelectedWorkouts(viewmodel.workoutLists)
-            }
 
+            viewmodel.livedataLastProgramWorkouts.removeObservers(viewLifecycleOwner)
+
+            viewmodel.livedataLastProgramWorkouts.observe(viewLifecycleOwner) {workoutList->
+                viewmodel.observeAndAddSelectedWorkouts(workoutList)
+            }
+            viewmodel.getProgramWorkoutWithID(program.programId)
         }else{
             viewmodel.createProgram(" "," "," "," "," "," "," "," ")
         }
         lastProgramId = Program(0,"","","","","","","","")
-        viewmodel.livedataLastID.observe(viewLifecycleOwner) {LastID->
-            lastProgramId=LastID
+        viewmodel.livedataLastID.observe(viewLifecycleOwner) {lastID->
+            lastProgramId=lastID
         }
         viewmodel.livedata.observe(viewLifecycleOwner,{listWorkout->
             spinnerAdapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,android.R.id.text1,listWorkout)

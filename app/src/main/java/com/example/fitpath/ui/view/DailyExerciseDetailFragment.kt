@@ -31,19 +31,25 @@ class DailyExerciseDetailFragment : Fragment() {
         val bundle:DailyExerciseDetailFragmentArgs by navArgs()
         exercise = bundle.exercise
         design.exercise = exercise
-        viewmodel.getExercise(exercise.exercise_daily_id)
-        viewmodel.livedata.observe(viewLifecycleOwner,{list->
-            Exercises = list as ArrayList<Exercise>
-            adapter = ExerciseAdapter(requireContext(),Exercises)
-            design.DetailExerciseRv.setHasFixedSize(true)
-            design.DetailExerciseRv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
-            design.adapter = adapter
-        })
+        observeExercise()
         return design.root
     }
     fun deleteButton(){
         viewmodel.deleteDailyExercise(exercise)
         Navigation.findNavController(design.buttonDeleteExercise).navigate(R.id.dailyExerciseDetail_DailyExercise)
+    }
+    private fun observeExercise(){
+        viewmodel.getExercise(exercise.exerciseDailyId)
+        viewmodel.livedata.observe(viewLifecycleOwner,{list->
+            Exercises = list as ArrayList<Exercise>
+            initAdapter(Exercises)
+        })
+    }
+    private fun initAdapter(exercises:ArrayList<Exercise>){
+        adapter = ExerciseAdapter(requireContext(),exercises)
+        design.DetailExerciseRv.setHasFixedSize(true)
+        design.DetailExerciseRv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+        design.adapter = adapter
     }
 
 

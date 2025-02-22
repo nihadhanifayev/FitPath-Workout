@@ -1,8 +1,6 @@
 package com.example.fitpath.ui.viewmodels
 
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fitpath.data.model.DailyExercise
@@ -11,8 +9,6 @@ import com.example.fitpath.data.dao.DailyExerciseDao
 import com.example.fitpath.data.dao.ExerciseDao
 import com.example.fitpath.data.model.Set
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -33,9 +29,6 @@ class ActivityTrainingViewModel @Inject constructor (var dao: DailyExerciseDao, 
 
     private var hourFlow = MutableStateFlow(0)
     var hourFlowImmutable : StateFlow<Int> = hourFlow
-
-    private var timerStatusLiveData = MutableLiveData(false)
-    var liveDataTimerStatus :LiveData<Boolean> = timerStatusLiveData
 
     var second = 0
     var hour = 0
@@ -98,7 +91,7 @@ class ActivityTrainingViewModel @Inject constructor (var dao: DailyExerciseDao, 
             lastID.let {
                 val exercise = Exercise(
                     0,
-                    lastID!!.exercise_daily_id,
+                    lastID!!.exerciseDailyId,
                     exerciseTitle,finalSet,finalRep,finalWeight)
                 exercises.add(exercise)
                 addExercise(exercise)
@@ -128,15 +121,10 @@ class ActivityTrainingViewModel @Inject constructor (var dao: DailyExerciseDao, 
     fun addWeightViewModel(){
         finalWeight+="$weight "
     }
-    /*fun getExercises(dailyExercise_LastID:Int){
-        val job = CoroutineScope(Dispatchers.Main).launch {
-            livedataExercises.value = daoExercise.getExercises(dailyExercise_LastID)
-        }
-    }*/
     fun addExerciseViewModel(exercise_name: String){
         lastID.let {
             val editedExercise = DailyExercise(
-                lastID!!.exercise_daily_id,
+                lastID!!.exerciseDailyId,
                 exercise_name,
                 time,
                 date)
@@ -148,28 +136,28 @@ class ActivityTrainingViewModel @Inject constructor (var dao: DailyExerciseDao, 
             deleteDailyExercise(lastID!!)
         }
     }
-    fun getLastID(){
-        val job = CoroutineScope(Dispatchers.Main).launch {
+    private fun getLastID(){
+        viewModelScope.launch {
             lastID = dao.getLastID()
         }
     }
-    fun addExercise(exercise: Exercise){
-        val job = CoroutineScope(Dispatchers.Main).launch {
+    private fun addExercise(exercise: Exercise){
+        viewModelScope.launch {
             daoExercise.addExercise(exercise)
         }
     }
     fun addDailyExercise(dailyExercise: DailyExercise){
-        val job = CoroutineScope(Dispatchers.Main).launch {
+        viewModelScope.launch {
             dao.addDailyExercise(dailyExercise)
         }
     }
-    fun updateDailyExercise(dailyExercise: DailyExercise){
-        val job = CoroutineScope(Dispatchers.Main).launch {
+    private fun updateDailyExercise(dailyExercise: DailyExercise){
+        viewModelScope.launch {
             dao.updateDailyExercise(dailyExercise)
         }
     }
-    fun deleteDailyExercise(dailyExercise: DailyExercise){
-        val job = CoroutineScope(Dispatchers.Main).launch {
+    private fun deleteDailyExercise(dailyExercise: DailyExercise){
+        viewModelScope.launch {
             dao.deleteDailyExercise(dailyExercise)
         }
     }

@@ -13,13 +13,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProgramDetailsOverviewFragmentViewModel @Inject constructor (var dao: ProgramDao, var daoWorkout: WorkoutDao, var daoProgramWorkouts: ProgramWorkoutsDao) :ViewModel() {
-    var childList1=ArrayList<ChildItem>()
-    var childList2=ArrayList<ChildItem>()
-    var childList3=ArrayList<ChildItem>()
-    var childList4=ArrayList<ChildItem>()
-    var childList5=ArrayList<ChildItem>()
-    var childList6=ArrayList<ChildItem>()
-    var childList7=ArrayList<ChildItem>()
+    private var childList1=ArrayList<ChildItem>()
+    private var childList2=ArrayList<ChildItem>()
+    private var childList3=ArrayList<ChildItem>()
+    private var childList4=ArrayList<ChildItem>()
+    private var childList5=ArrayList<ChildItem>()
+    private var childList6=ArrayList<ChildItem>()
+    private var childList7=ArrayList<ChildItem>()
     var childListManager=ArrayList<ArrayList<ChildItem>>()
     var programArray=ArrayList<ParentItem>()
 

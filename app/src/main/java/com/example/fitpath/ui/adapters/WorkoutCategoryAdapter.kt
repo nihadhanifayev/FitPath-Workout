@@ -57,8 +57,8 @@ class WorkoutCategoryAdapter(private val viewLifeCycleOwner:LifecycleOwner,priva
         }
         holder.category_name.text = category.category
         holder.cardViewCategory.setOnClickListener {
-            val send_category = WorkoutCategoryFragmentDirections.workoutCategoryFragmentWorkoutsFragment(category.category)
-            Navigation.findNavController(it).navigate(send_category)
+            val sendCategory = WorkoutCategoryFragmentDirections.workoutCategoryFragmentWorkoutsFragment(category.category)
+            Navigation.findNavController(it).navigate(sendCategory)
         }
 
     }

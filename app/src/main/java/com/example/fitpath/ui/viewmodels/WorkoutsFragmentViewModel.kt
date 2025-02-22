@@ -2,6 +2,7 @@ package com.example.fitpath.ui.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.fitpath.data.model.Workout
 import com.example.fitpath.data.dao.WorkoutDao
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,7 +21,7 @@ class WorkoutsFragmentViewModel @Inject constructor (var dao: WorkoutDao):ViewMo
     }
 
     fun getCategories(category:String){
-        val job = CoroutineScope(Dispatchers.Main).launch {
+        viewModelScope.launch {
             livedata.value = dao.getWorkouts(category)
         }
     }

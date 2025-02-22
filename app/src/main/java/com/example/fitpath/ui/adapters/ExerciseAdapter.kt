@@ -41,13 +41,13 @@ class ExerciseAdapter(private val mContext:Context,private var Exercises:List<Ex
     }
     override fun onBindViewHolder(holder: CardDesignObjectsExercises, position: Int) {
         val exercise = Exercises[position]
-        val exerciseRepSplit = exercise.exercise_rep.split(" ")
-        val exerciseSetSplit = exercise.exercise_set.split(" ")
-        val exerciseWeightSplit = exercise.exercise_weight.split(" ")
+        val exerciseRepSplit = exercise.exerciseRep.split(" ")
+        val exerciseSetSplit = exercise.exerciseSet.split(" ")
+        val exerciseWeightSplit = exercise.exerciseWeight.split(" ")
         var exerciseRepText = ""
         var exerciseWeightText = ""
         var exerciseSetText = ""
-        holder.exerciseTitle.text = exercise.exercise_name
+        holder.exerciseTitle.text = exercise.exerciseName
         holder.imageDetail.setOnClickListener {
             exerciseRepText = ""
             exerciseWeightText = ""
@@ -73,7 +73,7 @@ class ExerciseAdapter(private val mContext:Context,private var Exercises:List<Ex
             sets.text = exerciseSetText
             reps.text = exerciseRepText
             weights.text = exerciseWeightText
-            alertExerciseDetail.setTitle(exercise.exercise_name.toUpperCase(Locale.ROOT))
+            alertExerciseDetail.setTitle(exercise.exerciseName.uppercase(Locale.ROOT))
             alertExerciseDetail.setNegativeButton("Close"){dialoginterface,i -> }
             alertExerciseDetail.setView(layout)
             alertExerciseDetail.show()

@@ -22,13 +22,19 @@ class DailyExerciseFragment : Fragment() {
     private val viewmodel: DailyExerciseFragmentViewModel by viewModels()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         design = DataBindingUtil.inflate(inflater, R.layout.fragment_daily_exercise,container,false)
+        observeDailyExercise()
+        return design.root
+    }
+    private fun observeDailyExercise(){
         viewmodel.livedata.observe(viewLifecycleOwner,{list->
             dailyExercises = list as ArrayList<DailyExercise>
-            adapter = DailyExerciseAdapter(requireContext(),dailyExercises)
-            design.DailyExerciseRv.setHasFixedSize(true)
-            design.adapter = adapter
+            initAdapter(dailyExercises)
         })
         viewmodel.getDailyExercises()
-        return design.root
+    }
+    private fun initAdapter(dailyExercises: ArrayList<DailyExercise>){
+        adapter = DailyExerciseAdapter(requireContext(),dailyExercises)
+        design.DailyExerciseRv.setHasFixedSize(true)
+        design.adapter = adapter
     }
 }

@@ -8,11 +8,11 @@ import org.jetbrains.annotations.NotNull
 @Entity(tableName = "exercises")
 data class Exercise(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo("exercise_id") @NotNull var exercise_id:Int,
-    @ColumnInfo("daily_exercise_id") @NotNull var daily_exercise_id:Int,
-    @ColumnInfo("exercise_name") @NotNull var exercise_name:String,
-    @ColumnInfo("exercise_set") @NotNull var exercise_set:String,
-    @ColumnInfo("exercise_rep") @NotNull var exercise_rep:String,
-    @ColumnInfo("exercise_weight") @NotNull var exercise_weight:String){
+    @ColumnInfo("exercise_id") var exerciseId:Int,
+    @ColumnInfo("daily_exercise_id") var dailyExerciseId:Int,
+    @ColumnInfo("exercise_name") var exerciseName:String,
+    @ColumnInfo("exercise_set") var exerciseSet:String,
+    @ColumnInfo("exercise_rep") var exerciseRep:String,
+    @ColumnInfo("exercise_weight") var exerciseWeight:String){
 
 }

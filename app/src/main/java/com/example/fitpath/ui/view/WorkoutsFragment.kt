@@ -28,14 +28,19 @@ class WorkoutsFragment : Fragment() {
         val bundle:WorkoutsFragmentArgs by navArgs()
         val category = bundle.category
         workouts = ArrayList<Workout>()
+        observeWorkouts(category)
+        return design.root
+    }
+    private fun observeWorkouts(category:String){
         viewmodel.getCategories(category)
         viewmodel.livedata.observe(viewLifecycleOwner,{list->
             workouts = list as ArrayList<Workout>
-            adapter = WorkoutsAdapter(requireContext(),workouts)
-            design.WorkoutRV.setHasFixedSize(true)
-            design.workoutsAdapter = adapter
+            initAdapter(workouts)
         })
-
-        return design.root
+    }
+    private fun initAdapter(list:ArrayList<Workout>){
+        adapter = WorkoutsAdapter(requireContext(),list)
+        design.WorkoutRV.setHasFixedSize(true)
+        design.workoutsAdapter = adapter
     }
 }
