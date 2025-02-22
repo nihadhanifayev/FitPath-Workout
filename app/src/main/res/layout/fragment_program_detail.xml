@@ -8,13 +8,6 @@
         <variable name="programDetailObject" type="com.example.fitpath.ui.view.ProgramDetailFragment" />
         <variable name="spinneradapter" type="android.widget.ArrayAdapter" />
         <variable name="view" type="android.view.View" />
-        <variable name="dayNumber1" type="String" />
-        <variable name="dayNumber2" type="String" />
-        <variable name="dayNumber3" type="String" />
-        <variable name="dayNumber4" type="String" />
-        <variable name="dayNumber5" type="String" />
-        <variable name="dayNumber6" type="String" />
-        <variable name="dayNumber7" type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -101,7 +94,7 @@
             android:layout_width="120dp"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayoutDayFife"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayoutDayFive"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDayThree">
 
@@ -116,7 +109,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutDayFife"
+            android:id="@+id/textInputLayoutDayFive"
             android:layout_width="120dp"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
@@ -125,10 +118,10 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDayFour">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textFife"
+                android:id="@+id/textFive"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Day Fife"
+                android:hint="Day Five"
                 android:text="@{program.dayFife}"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
@@ -141,7 +134,7 @@
             android:layout_marginStart="16dp"
             app:layout_constraintBottom_toTopOf="@+id/TextInputLayoutDayseven"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDayFife">
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDayFive">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textSix"
@@ -178,7 +171,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="80dp"
             android:backgroundTint="@color/PrimaryFife"
-            android:onClick="@{() -> programDetailObject.createButtonFun(textProgramTitle.getText().toString(),textOne.getText().toString(),textTwo.getText().toString(),textThree.getText().toString(),textFour.getText().toString(),textFife.getText().toString(),textSix.getText().toString(),textSeven.getText().toString())}"
+            android:onClick="@{() -> programDetailObject.createButtonFun(textProgramTitle.getText().toString(),textOne.getText().toString(),textTwo.getText().toString(),textThree.getText().toString(),textFour.getText().toString(),textFive.getText().toString(),textSix.getText().toString(),textSeven.getText().toString())}"
             android:text="Create"
             android:textSize="20sp"
             app:cornerRadius="5dp"
@@ -211,7 +204,7 @@
             android:layout_marginEnd="8dp"
             android:adapter="@{spinneradapter}"
             android:background="@color/white"
-            android:onItemSelected="@{() -> programDetailObject.addWorkoutOne()}"
+            android:onItemSelected="@{() -> programDetailObject.addWorkout(0)}"
             android:spinnerMode="dialog"
             android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@+id/spinnerDayTwo"
@@ -226,7 +219,7 @@
             android:layout_marginEnd="8dp"
             android:adapter="@{spinneradapter}"
             android:background="@color/white"
-            android:onItemSelected="@{() -> programDetailObject.addWorkoutTwo()}"
+            android:onItemSelected="@{() -> programDetailObject.addWorkout(1)}"
             android:spinnerMode="dialog"
             android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@+id/spinnerDayThree"
@@ -241,7 +234,7 @@
             android:layout_marginEnd="8dp"
             android:adapter="@{spinneradapter}"
             android:background="@color/white"
-            android:onItemSelected="@{() -> programDetailObject.addWorkoutThree()}"
+            android:onItemSelected="@{() -> programDetailObject.addWorkout(2)}"
             android:spinnerMode="dialog"
             android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@+id/spinnerDayFour"
@@ -256,22 +249,22 @@
             android:layout_marginEnd="8dp"
             android:adapter="@{spinneradapter}"
             android:background="@color/white"
-            android:onItemSelected="@{() -> programDetailObject.addWorkoutFour()}"
+            android:onItemSelected="@{() -> programDetailObject.addWorkout(3)}"
             android:spinnerMode="dialog"
             android:textAlignment="center"
-            app:layout_constraintBottom_toTopOf="@+id/spinnerDayFife"
+            app:layout_constraintBottom_toTopOf="@+id/spinnerDayFive"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinnerDayThree"
             tools:ignore="TouchTargetSizeCheck" />
 
         <Spinner
-            android:id="@+id/spinnerDayFife"
+            android:id="@+id/spinnerDayFive"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:adapter="@{spinneradapter}"
             android:background="@color/white"
-            android:onItemSelected="@{() -> programDetailObject.addWorkoutFife()}"
+            android:onItemSelected="@{() -> programDetailObject.addWorkout(4)}"
             android:spinnerMode="dialog"
             android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@+id/spinnerDaySix"
@@ -286,12 +279,12 @@
             android:layout_marginEnd="8dp"
             android:adapter="@{spinneradapter}"
             android:background="@color/white"
-            android:onItemSelected="@{() -> programDetailObject.addWorkoutSix()}"
+            android:onItemSelected="@{() -> programDetailObject.addWorkout(5)}"
             android:spinnerMode="dialog"
             android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@+id/spinnerDaySeven"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerDayFife"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerDayFive"
             tools:ignore="TouchTargetSizeCheck" />
 
         <Spinner
@@ -301,7 +294,7 @@
             android:layout_marginEnd="8dp"
             android:adapter="@{spinneradapter}"
             android:background="@color/white"
-            android:onItemSelected="@{() -> programDetailObject.addWorkoutSeven()}"
+            android:onItemSelected="@{() -> programDetailObject.addWorkout(6)}"
             android:spinnerMode="dialog"
             android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@+id/buttonCreateProgram"
@@ -314,7 +307,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:onClick="@{() -> programDetailObject.showWorkouts(dayNumber1)}"
+            android:onClick="@{() -> programDetailObject.showWorkouts(1)}"
             app:layout_constraintBottom_toTopOf="@+id/imageViewDetailDayTwo"
             app:layout_constraintEnd_toStartOf="@+id/spinnerDayOne"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutProgramTitle"
@@ -325,7 +318,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:onClick="@{()-> programDetailObject.showWorkouts(dayNumber2)}"
+            android:onClick="@{()-> programDetailObject.showWorkouts(2)}"
             app:layout_constraintBottom_toTopOf="@+id/imageViewDetailDayThree"
             app:layout_constraintEnd_toStartOf="@+id/spinnerDayTwo"
             app:layout_constraintTop_toBottomOf="@+id/imageViewDetailDayOne"
@@ -336,7 +329,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:onClick="@{()->programDetailObject.showWorkouts(dayNumber3)}"
+            android:onClick="@{()->programDetailObject.showWorkouts(3)}"
             app:layout_constraintBottom_toTopOf="@+id/imageViewDetailDayFour"
             app:layout_constraintEnd_toStartOf="@+id/spinnerDayThree"
             app:layout_constraintTop_toBottomOf="@+id/imageViewDetailDayTwo"
@@ -347,20 +340,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:onClick="@{()->programDetailObject.showWorkouts(dayNumber4)}"
-            app:layout_constraintBottom_toTopOf="@+id/imageViewDetailDayFife"
+            android:onClick="@{()->programDetailObject.showWorkouts(4)}"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewDetailDayFive"
             app:layout_constraintEnd_toStartOf="@+id/spinnerDayFour"
             app:layout_constraintTop_toBottomOf="@+id/imageViewDetailDayThree"
             app:srcCompat="@drawable/eye_logo" />
 
         <ImageView
-            android:id="@+id/imageViewDetailDayFife"
+            android:id="@+id/imageViewDetailDayFive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:onClick="@{()->programDetailObject.showWorkouts(dayNumber5)}"
+            android:onClick="@{()->programDetailObject.showWorkouts(5)}"
             app:layout_constraintBottom_toTopOf="@+id/imageViewDetailDaySix"
-            app:layout_constraintEnd_toStartOf="@+id/spinnerDayFife"
+            app:layout_constraintEnd_toStartOf="@+id/spinnerDayFive"
             app:layout_constraintTop_toBottomOf="@+id/imageViewDetailDayFour"
             app:srcCompat="@drawable/eye_logo" />
 
@@ -369,10 +362,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:onClick="@{()->programDetailObject.showWorkouts(dayNumber6)}"
+            android:onClick="@{()->programDetailObject.showWorkouts(6)}"
             app:layout_constraintBottom_toTopOf="@+id/imageViewDetailDaySeven"
             app:layout_constraintEnd_toStartOf="@+id/spinnerDaySix"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewDetailDayFife"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewDetailDayFive"
             app:srcCompat="@drawable/eye_logo" />
 
         <ImageView
@@ -380,7 +373,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:onClick="@{()->programDetailObject.showWorkouts(dayNumber7)}"
+            android:onClick="@{()->programDetailObject.showWorkouts(7)}"
             app:layout_constraintBottom_toTopOf="@+id/buttonCreateProgram"
             app:layout_constraintEnd_toStartOf="@+id/spinnerDaySeven"
             app:layout_constraintTop_toBottomOf="@+id/imageViewDetailDaySix"
@@ -391,7 +384,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="24dp"
-            android:onClick="@{()->programDetailObject.deleteWorkouts(dayNumber1)}"
+            android:onClick="@{()->programDetailObject.deleteWorkouts(1)}"
             app:layout_constraintBottom_toTopOf="@+id/imageViewDeleteDayTwo"
             app:layout_constraintStart_toEndOf="@+id/textInputLayoutDayOne"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutProgramTitle"
@@ -402,7 +395,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="24dp"
-            android:onClick="@{()->programDetailObject.deleteWorkouts(dayNumber2)}"
+            android:onClick="@{()->programDetailObject.deleteWorkouts(2)}"
             app:layout_constraintBottom_toTopOf="@+id/imageViewDeleteDayThree"
             app:layout_constraintStart_toEndOf="@+id/textInputLayoutDayTwo"
             app:layout_constraintTop_toBottomOf="@+id/imageViewDeleteDayOne"
@@ -413,7 +406,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="24dp"
-            android:onClick="@{()->programDetailObject.deleteWorkouts(dayNumber3)}"
+            android:onClick="@{()->programDetailObject.deleteWorkouts(3)}"
             app:layout_constraintBottom_toTopOf="@+id/imageViewDeleteDayFour"
             app:layout_constraintStart_toEndOf="@+id/textInputLayoutDayThree"
             app:layout_constraintTop_toBottomOf="@+id/imageViewDeleteDayTwo"
@@ -424,20 +417,20 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="24dp"
-            android:onClick="@{()->programDetailObject.deleteWorkouts(dayNumber4)}"
-            app:layout_constraintBottom_toTopOf="@+id/imageViewDeleteDayFife"
+            android:onClick="@{()->programDetailObject.deleteWorkouts(4)}"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewDeleteDayFive"
             app:layout_constraintStart_toEndOf="@+id/textInputLayoutDayFour"
             app:layout_constraintTop_toBottomOf="@+id/imageViewDeleteDayThree"
             app:srcCompat="@drawable/delete" />
 
         <ImageView
-            android:id="@+id/imageViewDeleteDayFife"
+            android:id="@+id/imageViewDeleteDayFive"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="24dp"
-            android:onClick="@{()->programDetailObject.deleteWorkouts(dayNumber5)}"
+            android:onClick="@{()->programDetailObject.deleteWorkouts(5)}"
             app:layout_constraintBottom_toTopOf="@+id/imageViewDeleteDaySix"
-            app:layout_constraintStart_toEndOf="@+id/textInputLayoutDayFife"
+            app:layout_constraintStart_toEndOf="@+id/textInputLayoutDayFive"
             app:layout_constraintTop_toBottomOf="@+id/imageViewDeleteDayFour"
             app:srcCompat="@drawable/delete" />
 
@@ -446,10 +439,10 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="24dp"
-            android:onClick="@{()->programDetailObject.deleteWorkouts(dayNumber6)}"
+            android:onClick="@{()->programDetailObject.deleteWorkouts(6)}"
             app:layout_constraintBottom_toTopOf="@+id/imageViewDeleteDaySeven"
             app:layout_constraintStart_toEndOf="@+id/textInputLayoutDaySix"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewDeleteDayFife"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewDeleteDayFive"
             app:srcCompat="@drawable/delete" />
 
         <ImageView
@@ -457,7 +450,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="24dp"
-            android:onClick="@{()->programDetailObject.deleteWorkouts(dayNumber7)}"
+            android:onClick="@{()->programDetailObject.deleteWorkouts(7)}"
             app:layout_constraintBottom_toTopOf="@+id/buttonCreateProgram"
             app:layout_constraintStart_toEndOf="@+id/TextInputLayoutDayseven"
             app:layout_constraintTop_toBottomOf="@+id/imageViewDeleteDaySix"
