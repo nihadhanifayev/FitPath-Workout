@@ -3,6 +3,7 @@ package com.example.fitpath.ui.view
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -29,18 +30,23 @@ class ProgramDetailFragment : Fragment() {
     private val viewmodel: ProgramDetailFragmentViewModel by activityViewModels()
     private lateinit var arrayWorkouts:ArrayList<String>
     private lateinit var lastProgramId: Program
+    private lateinit var workouts: List<ProgramWorkouts>
 
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         design = DataBindingUtil.inflate(inflater, R.layout.fragment_program_detail,container,false)
         design.programDetailObject = this
+
+        return design.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewmodel.allWorkouts()
         val bundle:ProgramDetailFragmentArgs by navArgs()
         val program = bundle.program
         observeLiveData(program)
-
-        return design.root
     }
     fun createButtonFun(programTitle:String, day1:String, day2:String, day3:String, day4:String, day5:String, day6:String, day7:String){
         viewmodel.getLastId()
@@ -49,12 +55,16 @@ class ProgramDetailFragment : Fragment() {
         alertD2.setMessage("Are you sure you want to record the program?")
 
         alertD2.setPositiveButton("Ok") { dialoginterface, i ->
+            if (viewmodel.status){
+                viewmodel.checkList()
+            }
             addProgramWorkouts()
             update(programTitle,day1,day2,day3,day4,day5,day6,day7)
             design.progressBarCreate.visibility = View.VISIBLE
             Handler().postDelayed({
                 Navigation.findNavController(design.buttonCreateProgram).navigate(R.id.programDetailF_weeklyProgram)
             },3000)
+            viewmodel.status = false
         }
         alertD2.setNegativeButton("Cancel"){dialoginterface,i -> }
         alertD2.show()
@@ -81,10 +91,25 @@ class ProgramDetailFragment : Fragment() {
             5 -> design.spinnerDaySix
             else -> {design.spinnerDaySeven}
         }
-
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                viewmodel.selectedWorkoutManager[spinnerIndex].add(arrayWorkouts[position])}
+                if (viewmodel.status){
+                    val tempList = viewmodel.selectedWorkoutManager[spinnerIndex].toList()
+                    for (workout in tempList){
+                        if (workout==arrayWorkouts[position]){
+                            Log.e("test",workout)
+                            viewmodel.selectedWorkoutManager[spinnerIndex].remove(arrayWorkouts[position])
+                        }
+                        else{
+                            viewmodel.selectedWorkoutManager[spinnerIndex].add(arrayWorkouts[position])
+                            break
+                        }
+                    }
+                }
+                else{
+                    viewmodel.selectedWorkoutManager[spinnerIndex].add(arrayWorkouts[position])
+                }
+            }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }}
     fun showWorkouts(number:Int){
@@ -104,13 +129,14 @@ class ProgramDetailFragment : Fragment() {
 
     private fun observeLiveData(program:Program?){
         if (program != null){
-            viewmodel.workoutManagerClear()
+            viewmodel.status = true
             design.buttonCreateProgram.text = "CHANGE"
             design.program = program
 
             viewmodel.livedataLastProgramWorkouts.removeObservers(viewLifecycleOwner)
 
             viewmodel.livedataLastProgramWorkouts.observe(viewLifecycleOwner) {workoutList->
+                workouts=workoutList
                 viewmodel.observeAndAddSelectedWorkouts(workoutList)
             }
             viewmodel.getProgramWorkoutWithID(program.programId)

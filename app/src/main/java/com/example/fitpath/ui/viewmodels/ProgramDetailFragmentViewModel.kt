@@ -28,7 +28,8 @@ class ProgramDetailFragmentViewModel @Inject constructor (var dao: ProgramDao, p
     private var selectedWorkoutsSix = ArrayList<String>()
     private var selectedWorkoutsSeven = ArrayList<String>()
     var selectedWorkoutManager = ArrayList<ArrayList<String>>()
-    var workoutLists = ArrayList<ProgramWorkouts>()
+    private var workoutLists = ArrayList<ProgramWorkouts>()
+    var status : Boolean = false
 
     init {
         livedata = MutableLiveData<List<String>>()
@@ -45,7 +46,7 @@ class ProgramDetailFragmentViewModel @Inject constructor (var dao: ProgramDao, p
         selectedWorkoutManager.add(selectedWorkoutsSix)
         selectedWorkoutManager.add(selectedWorkoutsSeven)
     }
-    fun workoutManagerClear(){
+    private fun workoutManagerClear(){
         for (x in 0..6){
             selectedWorkoutManager[x].clear()
         }
@@ -116,6 +117,31 @@ class ProgramDetailFragmentViewModel @Inject constructor (var dao: ProgramDao, p
         viewModelScope.launch{
             workoutLists = daoProgramWorkouts.getProgramIDWorkoutsWithPW(id) as ArrayList<ProgramWorkouts>
             livedataLastProgramWorkouts.postValue(workoutLists)
+        }
+    }
+    fun checkList(){
+        for (workout in workoutLists){
+            if (selectedWorkoutManager[0].contains(workout.workoutName)){
+                selectedWorkoutManager[0].remove(workout.workoutName)
+            }
+            if (selectedWorkoutManager[1].contains(workout.workoutName)){
+                selectedWorkoutManager[1].remove(workout.workoutName)
+            }
+            if (selectedWorkoutManager[2].contains(workout.workoutName)){
+                selectedWorkoutManager[2].remove(workout.workoutName)
+            }
+            if (selectedWorkoutManager[3].contains(workout.workoutName)){
+                selectedWorkoutManager[3].remove(workout.workoutName)
+            }
+            if (selectedWorkoutManager[4].contains(workout.workoutName)){
+                selectedWorkoutManager[4].remove(workout.workoutName)
+            }
+            if (selectedWorkoutManager[5].contains(workout.workoutName)){
+                selectedWorkoutManager[5].remove(workout.workoutName)
+            }
+            if (selectedWorkoutManager[6].contains(workout.workoutName)){
+                selectedWorkoutManager[6].remove(workout.workoutName)
+            }
         }
     }
 
