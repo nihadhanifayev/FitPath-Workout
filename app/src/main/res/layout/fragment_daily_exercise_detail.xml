@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="exercise" type="com.example.fitpath.classes.DailyExercise" />
-        <variable name="adapter" type="com.example.fitpath.adapters.ExerciseAdapter" />
-        <variable name="dailyexercisedetailfragmentobject" type="com.example.fitpath.DailyExerciseDetailFragment" />
+        <variable name="exercise" type="com.example.fitpath.data.model.DailyExercise" />
+        <variable name="adapter" type="com.example.fitpath.ui.adapters.ExerciseAdapter" />
+        <variable name="dailyexercisedetailfragmentobject" type="com.example.fitpath.ui.view.DailyExerciseDetailFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/PrimaryOne"
-        tools:context=".DailyExerciseDetailFragment">
+        tools:context=".ui.view.DailyExerciseDetailFragment">
 
         <TextView
             android:id="@+id/textViewExerciseDetailTitle"

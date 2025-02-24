@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/caloriCalculatorFragment"
-        android:name="com.example.fitpath.CalorieCalculatorFragment"
+        android:name="com.example.fitpath.ui.view.CalorieCalculatorFragment"
         android:label="fragment_calori_calculator"
         tools:layout="@layout/fragment_calori_calculator" />
     <fragment
         android:id="@+id/weeklyProgramFragment"
-        android:name="com.example.fitpath.WeeklyProgramFragment"
+        android:name="com.example.fitpath.ui.view.WeeklyProgramFragment"
         android:label="fragment_weekly_program"
         tools:layout="@layout/fragment_weekly_program" >
         <action
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/workoutsFragment"
-        android:name="com.example.fitpath.WorkoutsFragment"
+        android:name="com.example.fitpath.ui.view.WorkoutsFragment"
         android:label="fragment_workouts"
         tools:layout="@layout/fragment_workouts" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/programDetailFragment"
-        android:name="com.example.fitpath.ProgramDetailFragment"
+        android:name="com.example.fitpath.ui.view.ProgramDetailFragment"
         android:label="fragment_program_detail"
         tools:layout="@layout/fragment_program_detail" >
         <action
@@ -47,13 +47,13 @@
             app:popUpToInclusive="true" />
         <argument
             android:name="program"
-            app:argType="com.example.fitpath.classes.Program"
+            app:argType="com.example.fitpath.data.model.Program"
             app:nullable="true"
             android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/workoutCategoryFragment"
-        android:name="com.example.fitpath.WorkoutCategoryFragment"
+        android:name="com.example.fitpath.ui.view.WorkoutCategoryFragment"
         android:label="fragment_workout_category"
         tools:layout="@layout/fragment_workout_category" >
         <action
@@ -65,16 +65,16 @@
     </fragment>
     <fragment
         android:id="@+id/workoutDetailFragment"
-        android:name="com.example.fitpath.WorkoutDetailFragment"
+        android:name="com.example.fitpath.ui.view.WorkoutDetailFragment"
         android:label="fragment_workout_detail"
         tools:layout="@layout/fragment_workout_detail" >
         <argument
             android:name="workout"
-            app:argType="com.example.fitpath.classes.Workout" />
+            app:argType="com.example.fitpath.data.model.Workout" />
     </fragment>
     <fragment
         android:id="@+id/dailyExerciseFragment"
-        android:name="com.example.fitpath.DailyExerciseFragment"
+        android:name="com.example.fitpath.ui.view.DailyExerciseFragment"
         android:label="fragment_daily_exercise"
         tools:layout="@layout/fragment_daily_exercise" >
         <action
@@ -83,16 +83,16 @@
     </fragment>
     <fragment
         android:id="@+id/programDetailsOverviewFragment"
-        android:name="com.example.fitpath.ProgramDetailsOverviewFragment"
+        android:name="com.example.fitpath.ui.view.ProgramDetailsOverviewFragment"
         android:label="fragment_program_details_overview"
         tools:layout="@layout/fragment_program_details_overview" >
         <argument
             android:name="program"
-            app:argType="com.example.fitpath.classes.Program" />
+            app:argType="com.example.fitpath.data.model.Program" />
     </fragment>
     <fragment
         android:id="@+id/dailyExerciseDetailFragment"
-        android:name="com.example.fitpath.DailyExerciseDetailFragment"
+        android:name="com.example.fitpath.ui.view.DailyExerciseDetailFragment"
         android:label="fragment_daily_exercise_detail"
         tools:layout="@layout/fragment_daily_exercise_detail" >
         <action
@@ -102,11 +102,11 @@
             app:popUpToInclusive="true" />
         <argument
             android:name="exercise"
-            app:argType="com.example.fitpath.classes.DailyExercise" />
+            app:argType="com.example.fitpath.data.model.DailyExercise" />
     </fragment>
     <fragment
         android:id="@+id/activityFragment"
-        android:name="com.example.fitpath.ActivityFragment"
+        android:name="com.example.fitpath.ui.view.ActivityFragment"
         android:label="ActivityFragment"
         tools:layout="@layout/fragment_activity">
         <action

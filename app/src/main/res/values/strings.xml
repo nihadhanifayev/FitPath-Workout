@@ -19,6 +19,23 @@
     <string name="textViewDayFife">DAY FIFE</string>
     <string name="textViewDaySix">DAY SIX</string>
     <string name="textViewDaySeven">DAY SEVEN</string>
+    <string name="StartTrainingTitle">Start Training</string>
+    <string name="StopTrainingTitle">Start Training</string>
+    <string name="ConfirmExerciseTitle">Stop Exercise</string>
+    <string name="AlertDialogFinishTrainingMessage">İf you cancel, your training records will be deleted.</string>
+    <string name="AlertDialogFinishTrainingTitle">Add Exercise Name</string>
+    <string name="AlertDialogAddExerciseTitle">Add Exercise Name</string>
+    <string name="AlertDialogAddExerciseMessage">Enter the name of the exercise you will do</string>
+    <string name="AlertDialogMessageSetStatusTrue">Complete the exercise first</string>
+    <string name="AlertDialogTitleSetStatusTrue">İnfo</string>
+    <string name="ButtonAddExerciseText">ADD EXERCISE</string>
+    <string name="AlertDialogMessageSetStatusFalse">Are you sure you want to record the exercise?</string>
+    <string name="AlertDialogTitleSetStatusFalse">Add Exercise</string>
+    <string name="ButtonSetTextStart">CONFIRM SET</string>
+    <string name="ButtonSetTextStop">ADD SET</string>
+    <string name="AlertDialogPositiveButtonText">OK</string>
+    <string name="AlertDialogNegativeButtonText">Cancel</string>
+    <string name="ReadMore">READ MORE</string>
     <string name="Empty" />
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="caloriecalculatorfragmentobject" type="com.example.fitpath.CalorieCalculatorFragment" />
+        <variable name="caloriecalculatorfragmentobject" type="com.example.fitpath.ui.view.CalorieCalculatorFragment" />
         <variable name="BMI" type="Integer" />
         <variable name="BMIResult" type="String" />
         <variable name="DailyCalorie" type="String" />
@@ -15,19 +15,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/PrimaryOne"
-        tools:context=".CalorieCalculatorFragment">
+        tools:context=".ui.view.CalorieCalculatorFragment">
 
         <TextView
             android:id="@+id/textViewCaloriCalcİnfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:text="@string/CalorieCalculatorHeader"
             android:textAllCaps="true"
             android:textColor="@color/PrimarySix"
             android:textSize="20sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,6 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewCaloriCalcİnfo">
 
@@ -54,6 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
@@ -71,6 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/radioGroupGender"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
@@ -88,6 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/radioGroupActivity"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
@@ -116,6 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonCalculate"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radioGroupGender">
 
@@ -160,13 +165,15 @@
             android:id="@+id/buttonCalculate"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="32dp"
             android:backgroundTint="@color/PrimarySix"
+            android:onClick="@{() -> caloriecalculatorfragmentobject.calculateButton(textAge.getText().toString(),textHeight.getText().toString(),textWeight.getText().toString())}"
             android:text="@string/CalculateButtonText"
             android:textSize="20sp"
-            android:onClick="@{() -> caloriecalculatorfragmentobject.calculateButton(textAge.getText().toString(),textHeight.getText().toString(),textWeight.getText().toString())}"
             app:cornerRadius="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radioGroupActivity" />
 

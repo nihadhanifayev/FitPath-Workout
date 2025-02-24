@@ -4,10 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="activitytrainingobject" type="com.example.fitpath.ActivityFragment" />
-        <variable name="adapter" type="com.example.fitpath.adapters.ExerciseAdapter" />
-        <variable name="adapterSet" type="com.example.fitpath.adapters.SetAdapter" />
+        <variable name="activitytrainingobject" type="com.example.fitpath.ui.view.ActivityFragment" />
+        <variable name="adapter" type="com.example.fitpath.ui.adapters.ExerciseAdapter" />
+        <variable name="adapterSet" type="com.example.fitpath.ui.adapters.SetAdapter" />
         <variable name="set" type="String" />
+        <variable name="second" type="Integer" />
+        <variable name="minute" type="Integer" />
+        <variable name="hour" type="Integer" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,13 +37,13 @@
             android:id="@+id/textViewHour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:text="00"
+            android:text="@{hour &lt; 10 ? 0+hour.toString : hour.toString()}"
             android:textColor="@color/white"
             android:textSize="34sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/textViewMinute"
+            app:layout_constraintEnd_toStartOf="@+id/textView3"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/textViewTraining"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,12 +52,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text=": 00"
+            android:text="@{minute &lt; 10 ? 0+minute.toString() : minute.toString()}"
             android:textColor="@color/white"
             android:textSize="34sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/textViewSecond"
-            app:layout_constraintStart_toEndOf="@+id/textViewHour"
+            app:layout_constraintEnd_toStartOf="@+id/textView4"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView3"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -62,13 +66,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
-            android:text=": 00"
+            android:text="@{second &lt; 10 ? 0+second.toString : second.toString()}"
             android:textColor="@color/white"
             android:textSize="34sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textViewMinute"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
@@ -106,11 +110,13 @@
             android:layout_width="300dp"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
+            android:backgroundTint="@color/PrimarySix"
             android:onClick="@{()->activitytrainingobject.addExercise()}"
             android:text=" Add Exercise"
             android:textAllCaps="true"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:visibility="gone"
             app:cornerRadius="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -121,6 +127,7 @@
             android:layout_width="400dp"
             android:layout_height="150dp"
             android:layout_marginTop="16dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewExerciseText">
@@ -190,12 +197,14 @@
             android:layout_width="300dp"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
+            android:backgroundTint="@color/PrimaryTen"
             android:onClick="@{()->activitytrainingobject.addSet()}"
             android:text="Add Set"
             android:textAllCaps="true"
             android:textColor="@color/PrimaryOne"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:visibility="gone"
             app:cornerRadius="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -214,6 +223,7 @@
             android:textColor="@color/PrimaryOne"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonAddSet" />
@@ -230,6 +240,32 @@
             app:layout_constraintEnd_toStartOf="@+id/TrainingRV"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardViewExercise" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="-"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toStartOf="@+id/textViewMinute"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textViewHour"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="-"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toStartOf="@+id/textViewSecond"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textViewMinute"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
